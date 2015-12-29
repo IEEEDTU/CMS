@@ -18,5 +18,18 @@ class Course(models.Model):
 	def __str__(self):
 		return self.courseId
 		
+	@classmethod
+	def create(cls, courseId, courseName, courseType, credits, sessMaxMarks, endMaxSemMarks, maxMarks, minPassingMarks, semester):
+		course = cls(courseId = courseId, courseName = courseName, courseType = courseType, credits = credits,
+						sessMaxMarks = sessMaxMarks, endMaxSemMarks = endMaxSemMarks, maxMarks = maxMarks, 
+						minPassingMarks = minPassingMarks, semester = semester)
+		# do something with course
+		course.save()
+		return course
+		
+# course = Course.create("SE-203", "DS", "Core", 4, 30, 70, 100, 40, 3) --> For testing
+
+		
+		
 	
 	
