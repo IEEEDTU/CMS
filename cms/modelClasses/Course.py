@@ -1,5 +1,31 @@
 from django.db import models
 
+class CourseManager(models.Manager):
+	def addCourse(self, req):
+		self.courseId = req['courseId']
+		self.courseName = req['courseName']
+		self.courseType = req['courseType']
+		self.credits = req['credits']
+		self.sessMaxMarks = req['sessMaxMarks']
+		self.endMaxSemMarks = req['endMaxSemMarks']
+		self.maxMarks = req['maxMarks'] 
+		self.minPassingMarks = req['minPassingMarks']
+		self.semester = req['semester']
+		
+		course = Course(self.courseId,
+						self.courseName,
+						self.courseType,
+						self.credits, 
+						self.sessMaxMarks, 
+						self.endMaxSemMarks, 
+						self.maxMarks, 
+						self.minPassingMarks, 
+						self.semester
+					)
+		# do something with course
+		course.save()
+		return True
+		
 class Course(models.Model):
 	courseId = models.CharField(max_length=10, primary_key=True)
 	courseName = models.CharField(max_length=100, blank=False, null=False)
@@ -15,19 +41,24 @@ class Course(models.Model):
 	# 	on_delete = models.CASCADE,
 	# )
 	
+	objects = CourseManager()
+	
 	def __str__(self):
 		return self.courseId
 		
-	@classmethod
-	def create(cls, courseId, courseName, courseType, credits, sessMaxMarks, endMaxSemMarks, maxMarks, minPassingMarks, semester):
-		course = cls(courseId = courseId, courseName = courseName, courseType = courseType, credits = credits,
-						sessMaxMarks = sessMaxMarks, endMaxSemMarks = endMaxSemMarks, maxMarks = maxMarks, 
-						minPassingMarks = minPassingMarks, semester = semester)
-		# do something with course
-		course.save()
-		return course
-		
-# course = Course.create("SE-203", "DS", "Core", 4, 30, 70, 100, 40, 3) --> For testing
+# req = {
+# 	'courseId': 'SE-206',
+# 	"courseName": "AE",
+# 	"courseType": "Allied",
+# 	"credits": 4,
+# 	"sessMaxMarks": 30,
+# 	"endMaxSemMarks": 70,
+# 	"maxMarks": 100,
+# 	"minPassingMarks": 40,
+# 	"semester": 3
+# }
+	
+# course = Course.objects.addCourse(req) #--> For testing
 
 		
 		
