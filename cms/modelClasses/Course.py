@@ -1,4 +1,5 @@
 from django.db import models
+from django.core import serializers
 
 class CourseManager(models.Manager):
 	def addCourse(self, req):
@@ -39,19 +40,25 @@ class CourseManager(models.Manager):
 	
 	def getCourse(self, req):
 		if req != {}:
-			return Course.objects.get(courseId = req['courseId'])
+			course = Course.objects.get(courseId = req['courseId'])
 		else:
-			return Course.objects.all()
+			course = Course.objects.all()
+		s = serializers.serialize('json', course)
+		return s
 			
 	def getCourseByType(self, req):
-		return Course.objects.filter(courseType = req['courseType'])
+		course = Course.objects.filter(courseType = req['courseType'])
+		s = serializers.serialize('json', course)
+		return s
 		
 	def getCourseByBranch(self, req):
-		return Course.objects.filter(
+		course = Course.objects.filter(
 			# branch = req['branch'],
 			# degree = req['degree'],
 			semester = req['semester']
 		)
+		s = serializers.serialize('json', course)
+		return s
 			
 		
 class Course(models.Model):
@@ -87,7 +94,7 @@ req = {
 # 	"endMaxSemMarks": 70,
 # 	"maxMarks": 100,
 # 	"minPassingMarks": 40,
-#	"semester": 3
+	# "semester": 3
 }
 
 # req = {
