@@ -59,7 +59,19 @@ class CourseManager(models.Manager):
 		)
 		s = serializers.serialize('json', course)
 		return s
-			
+	
+	def deleteCourse(self, req):
+		if 'courseId' in req:
+			course = Course.objects.filter(courseId = req['courseId'])
+		else:
+			course = Course.objects.filter(courseName = req['courseName'],
+				# branch = req['branch'],
+				# degree = req['degree'],
+				semester = req['semester'])
+		if course.delete():
+			return True
+		else:
+			return False
 		
 class Course(models.Model):
 	courseId = models.CharField(max_length=10, primary_key=True)
@@ -86,15 +98,15 @@ class Course(models.Model):
 		return self.courseId
 		
 req = {
-# 	'courseId': 'SE-206',
-#	"courseName": "DS",
-#	 "courseType": "Core",
+# 	'courseId': 'SE-203',
+# 	"courseName": "DS",
+# 	"courseType": "Core",
 # 	"credits": 4,
 # 	"sessMaxMarks": 30,
 # 	"endMaxSemMarks": 70,
 # 	"maxMarks": 100,
 # 	"minPassingMarks": 40,
-	# "semester": 3
+	"semester": 3
 }
 
 # req = {
@@ -103,7 +115,9 @@ req = {
 	
 #--> For testing
 # print (Course.objects.getCourseByBranch(req))
-		
-		
-	
-	
+
+# c = Course.objects.all()
+# print (c)
+# c.delete()
+
+Course.objects.generateCourseId(req)

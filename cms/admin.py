@@ -27,3 +27,4 @@ admin.site.register(Group)
 admin.site.register(CourseGroup)
 admin.site.register(Score)
 admin.site.register(Result)
+
