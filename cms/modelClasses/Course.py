@@ -11,6 +11,8 @@ class CourseManager(models.Manager):
 		self.maxMarks = req['maxMarks'] 
 		self.minPassingMarks = req['minPassingMarks']
 		self.semester = req['semester']
+		# self.degree = req['degree']
+		# self.branch = req['branch']
 		
 		course = Course(self.courseId,
 						self.courseName,
@@ -20,11 +22,37 @@ class CourseManager(models.Manager):
 						self.endMaxSemMarks, 
 						self.maxMarks, 
 						self.minPassingMarks, 
-						self.semester
+						self.semester,
+						# self.degree,
+						# self.branch,
 					)
 		# do something with course
 		course.save()
 		return True
+		
+	def getCourseId(self, req):
+		course = Course.objects.get(courseName = req['courseName'], semester = req['semester'],
+									# degree = req['degree'],
+									# branch = req['branch']
+									)
+		return course.courseId
+	
+	def getCourse(self, req):
+		if req != {}:
+			return Course.objects.get(courseId = req['courseId'])
+		else:
+			return Course.objects.all()
+			
+	def getCourseByType(self, req):
+		return Course.objects.filter(courseType = req['courseType'])
+		
+	def getCourseByBranch(self, req):
+		return Course.objects.filter(
+			# branch = req['branch'],
+			# degree = req['degree'],
+			semester = req['semester']
+		)
+			
 		
 class Course(models.Model):
 	courseId = models.CharField(max_length=10, primary_key=True)
@@ -36,6 +64,10 @@ class Course(models.Model):
 	maxMarks = models.DecimalField(decimal_places = 1, max_digits = 4)
 	minPassingMarks = models.DecimalField(decimal_places = 1, max_digits = 4)
 	semester = models.IntegerField()
+	# degree = models.ForeignKey(
+	# 	'degree',
+	# 	on_delete = models.CASCADE,
+	# )
 	# branch = models.ForeignKey(
 	# 	'branch',
 	# 	on_delete = models.CASCADE,
@@ -46,20 +78,24 @@ class Course(models.Model):
 	def __str__(self):
 		return self.courseId
 		
-# req = {
+req = {
 # 	'courseId': 'SE-206',
-# 	"courseName": "AE",
-# 	"courseType": "Allied",
+#	"courseName": "DS",
+#	 "courseType": "Core",
 # 	"credits": 4,
 # 	"sessMaxMarks": 30,
 # 	"endMaxSemMarks": 70,
 # 	"maxMarks": 100,
 # 	"minPassingMarks": 40,
-# 	"semester": 3
+#	"semester": 3
+}
+
+# req = {
+# 	'courseId': 'SE-203'
 # }
 	
-# course = Course.objects.addCourse(req) #--> For testing
-
+#--> For testing
+# print (Course.objects.getCourseByBranch(req))
 		
 		
 	
