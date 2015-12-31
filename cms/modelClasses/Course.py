@@ -65,11 +65,11 @@ class Course(models.Model):
 	minPassingMarks = models.DecimalField(decimal_places = 1, max_digits = 4)
 	semester = models.IntegerField()
 	# degree = models.ForeignKey(
-	# 	'degree',
+	# 	'Degree',
 	# 	on_delete = models.CASCADE,
 	# )
 	# branch = models.ForeignKey(
-	# 	'branch',
+	# 	'Branch',
 	# 	on_delete = models.CASCADE,
 	# )
 	

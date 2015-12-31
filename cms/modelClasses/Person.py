@@ -19,19 +19,19 @@ from django.db import models
 class Person(models.Model):
 	dtuRegId=models.CharField(max_length=10,primary_key=True, blank=False, null=False)
 	# name=models.ForeignKey(
-	# 	'name',
+	# 	'Name',
 	# 	on_delete=models.CASCADE,
 	# )
 	# permanentAdd=models.ForeignKey(
-	# 	'permanentAdd',
+	# 	'Address',
 	# 	on_delete=models.CASCADE,
 	# )
 	# presentAdd=models.ForeignKey(
-	# 	'presentAdd',
+	# 	'Address',
 	# 	on_delete=models.CASCADE,
 	# )
 	# guardianAdd=models.ForeignKey(
-	# 	'guardianAdd',
+	# 	'Address',
 	# 	on_delete=models.CASCADE,
 	# )
 	personalMobile = models.IntegerField()

@@ -6,16 +6,16 @@ class Faculty(models.Model):
 	dateOfJoining = models.DateField()
 	jobType = models.CharField(max_length=50, blank=False, null=False)
 	# department = models.ForeignKey(
-	# 	'department',
+	# 	'Department',
 	# 	on_delete = models.CASCADE,
 	# )
 	dtuRegID = models.CharField(max_length=10,primary_key=True, blank=False, null=False)
 	# field = models.ForeignKey(
-	# 	'field',
+	# 	'Field',
 	# 	on_delete=models.CASCADE,
 	# )
 	# salary = models.ForeignKey(
-	# 	'salary',
+	# 	'Salary',
 	# 	on_delete=models.CASCADE,
 	# )
 	libraryId = models.CharField(max_length=30, blank=False, null=False)

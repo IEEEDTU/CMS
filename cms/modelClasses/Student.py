@@ -4,11 +4,11 @@ class Student(models.Model):
 	rollNo = models.CharField(max_length=30, blank=False, null=False)
 	dtuRegId=models.CharField(max_length=10,primary_key=True, blank=False, null=False)
 	# branch = models.ForeignKey(
-	# 	'branch',
+	# 	'Branch',
 	# 	on_delete = models.CASCADE,
 	# )
 	# degree = models.ForeignKey(
-	# 	'degree',
+	# 	'Degree',
 	# 	on_delete = models.CASCADE,
 	# )
 	admissionYear = models.IntegerField()
