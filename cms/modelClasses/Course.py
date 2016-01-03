@@ -97,27 +97,27 @@ class Course(models.Model):
 	def __str__(self):
 		return self.courseId
 		
-req = {
-# 	'courseId': 'SE-203',
-# 	"courseName": "DS",
-# 	"courseType": "Core",
-# 	"credits": 4,
-# 	"sessMaxMarks": 30,
-# 	"endMaxSemMarks": 70,
-# 	"maxMarks": 100,
-# 	"minPassingMarks": 40,
-	"semester": 3
-}
-
 # req = {
-# 	'courseId': 'SE-203'
+# # 	'courseId': 'SE-203',
+# # 	"courseName": "DS",
+# # 	"courseType": "Core",
+# # 	"credits": 4,
+# # 	"sessMaxMarks": 30,
+# # 	"endMaxSemMarks": 70,
+# # 	"maxMarks": 100,
+# # 	"minPassingMarks": 40,
+# 	"semester": 3
 # }
+
+# # req = {
+# # 	'courseId': 'SE-203'
+# # }
 	
-#--> For testing
-# print (Course.objects.getCourseByBranch(req))
+# #--> For testing
+# # print (Course.objects.getCourseByBranch(req))
 
-# c = Course.objects.all()
-# print (c)
-# c.delete()
+# # c = Course.objects.all()
+# # print (c)
+# # c.delete()
 
-Course.objects.generateCourseId(req)
+# Course.objects.generateCourseId(req)
