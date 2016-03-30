@@ -1,0 +1,19 @@
+dic = {
+    "dtuRegId" : "DTU/2K12/B08/1501",
+    "name" : Name(fname="Rahul",mname="",lname="Arora",preferredName="rahularora"),
+    "permanentAdd" : Address(locality="B7 Gulabi Bagh",city="Delhi",state="Delhi",country="India",pincode=110001),
+    "presentAdd" : Address(locality="B8 Gulabi Bagh",city="Delhi",state="Delhi",country="India",pincode=110001),
+    "guardianAdd" : Address(locality="B8 Gulabi Bagh",city="Delhi",state="Delhi",country="India",pincode=110001),
+    "personalMobile" : Mobile(countryCode=91,mobileNum=9999955566),
+    "alternativeMobile" : Mobile(countryCode=91,mobileNum=9999955566),
+    "personalEmail" : "rahularora@gmail.com",
+    "alternativeEmail" : "rahularora@gmail.com",
+    "dateOfBirth" : "1994-01-01",
+    "gender" : "M",
+    "category" : "GEN",
+    "nationality" : "Indian",
+    "religion" : "Sikh",
+    "dormitory" : 1,
+    "fatherName" : Name(fname="Abc",mname="",lname="Arora",preferredName="abcarora"),
+    "motherName" : Name(fname="Def",mname="",lname="Arora",preferredName="defarora")
+}
