@@ -26,7 +26,6 @@ class ResultManager(models.Manager):
         R.save()
         return R
     #This function will receive dtuRegId and semester to get the result of the required student of that particular sem
-
     def getResult(self,request):
         S = Student.objects.get(dtuRegId = request['dtuRegId'])
         R = Result.objects.get(student = S, semester = request['semester'])
