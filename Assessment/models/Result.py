@@ -26,6 +26,13 @@ class ResultManager(models.Manager):
 		R.save()
 		return R
 
+    #This function will receive dtuRegId and semester to get the result of the required student of that particular sem
+    def getResult(self,request):
+        S = Student.objects.get(dtuRegId = request['dtuRegId'])
+        R = Result.objects.get(student = S, semester = request['semester'])
+        return R
+
+
 class Result(models.Model):
 	# Student
 	student = models.ForeignKey(Student, on_delete = models.CASCADE, default=False)
@@ -37,9 +44,9 @@ class Result(models.Model):
 	totalScore = models.DecimalField(decimal_places = 1, max_digits = 4)
 	# If locked=0 then result is hidden else visible
 	locked = models.BooleanField(default=0)
-	
+
 	objects = ResultManager()
-	
+
 	def __str__(self):
 		return self.student + "_" + str(self.semester) + " : " + str(self.totalScore)
 
