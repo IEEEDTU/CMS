@@ -116,8 +116,7 @@ class Course(models.Model):
 # #--> For testing
 # # print (Course.objects.getCourseByBranch(req))
 
-# # c = Course.objects.all()
-# # print (c)
-# # c.delete()
+c = Course.objects.all()
+print (c)
 
 # Course.objects.generateCourseId(req)
