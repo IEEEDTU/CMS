@@ -1,8 +1,6 @@
 from django.db import models
 from .Person import *
-from Course.models import Degree
-from Course.models import Branch
-import datetime
+from Course.models import Degree, Branch
 
 class StudentManager(models.Manager):
 	def addStudent(self,request):

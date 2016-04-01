@@ -1,5 +1,4 @@
 ﻿from django.db import models
-from django.core import serializers
 from .Branch import *
 from .AcademicDegree import *
 

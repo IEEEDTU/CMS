@@ -32,11 +32,11 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     #'appmodels.apps.AppmodelsConfig',
-    'Assessment.apps.AssessmentConfig',
+    'Assessment',
     'Communique.apps.CommuniqueConfig',
     'Course',
     'NewsFeed.apps.NewsfeedConfig',
-    'Profiler.apps.ProfilerConfig',
+    'Profiler',
     'Workspace.apps.WorkspaceConfig',
     'django.contrib.admin',
     'django.contrib.auth',
