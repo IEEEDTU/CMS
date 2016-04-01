@@ -39,9 +39,28 @@ class StudentManager(models.Manager):
 		)
 		S.save()
 		return S
-	def getStudentById(self,request):
-		#To get the object of student by its dtuRegId
+	
+	def getStudentByRegId(self,request):
+		#To get the object of student by its dtuRegId or rollNo
 		S = Student.objects.get(dtuRegId = request["dtuRegId"])
+		return S
+	
+	def getStudentByRollNo(self, request):
+		S = Student.objects.get(dtuRegId = request["rollNo"])
+		return S
+	
+	def getStudentsByName(self, request):
+		N = Name.objects.filter(fname = request['fname'])
+		rollNoList = []
+		for n in N
+			 S = Student.objects.filter(name = n)
+			 for s in S
+				rollNoList.append(s.rollNo)
+		return rollNoList
+	
+	def deleteStudent(self, request):
+		S = Student.objects.get(rollNo = request['rollNo'])
+		S = S.delete()
 		return S
 
 class Student(Person):
