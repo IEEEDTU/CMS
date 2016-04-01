@@ -39,13 +39,13 @@ class Department(models.Model):
     def __str__(self):
         return self.deptId + " - " + self.deptName
 	
-dic = {
-	'deptId': '',
-	'deptName': '',
-	'hod': '',
-	'email': '',
-	'location': '',
-	'branchCount': '',
-	'studentStrength': '',
-	'facultyStrength': ''
+dpt = {
+	'deptId': 'CSEX',
+	'deptName': 'Computer Science',
+	'hod': 'O.P. Verma',
+	'email': 'opverma@gmail.com',
+	'location': 'DTU',
+	'branchCount': '3',
+	'studentStrength': '300',
+	'facultyStrength': '20'
 	}

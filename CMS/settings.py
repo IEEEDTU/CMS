@@ -34,7 +34,7 @@ INSTALLED_APPS = [
     #'appmodels.apps.AppmodelsConfig',
     'Assessment.apps.AssessmentConfig',
     'Communique.apps.CommuniqueConfig',
-    'Course.apps.CourseConfig',
+    'Course',
     'NewsFeed.apps.NewsfeedConfig',
     'Profiler.apps.ProfilerConfig',
     'Workspace.apps.WorkspaceConfig',

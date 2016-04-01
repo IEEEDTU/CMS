@@ -21,7 +21,7 @@ class DegreeManager(models.Manager):
 	def deleteDegree(seld, request):
 		"""deletes any existing degree on the basis of degreeCode """
 		D = Degree.objects.get(degreeCode = request['degreeCode'])
-		D.delete()
+		D = D.delete()
 		return D
 
 class Degree(models.Model):
@@ -47,7 +47,7 @@ class Degree(models.Model):
     def __str__(self):
         return self.degreeCode + " - " + self.degreeName + " (" + self.degreeType + ")"
 
-dic = {
+deg = {
 	'degreeCode': 'BTECH',
 	'degreeName': 'Bachelors of Technology',
 	'degreeType': 'Regular',
@@ -57,3 +57,7 @@ dic = {
 	'lateFine': '500',
 	'admissionFee': '75000'
 	}
+
+d = {
+	'degreeCode' : 'BTECH'
+		}
