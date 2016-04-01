@@ -52,9 +52,9 @@ class StudentManager(models.Manager):
 	def getStudentsByName(self, request):
 		N = Name.objects.filter(fname = request['fname'])
 		rollNoList = []
-		for n in N
-			 S = Student.objects.filter(name = n)
-			 for s in S
+		for n in N:
+			S = Student.objects.filter(name = n)
+			for s in S:
 				rollNoList.append(s.rollNo)
 		return rollNoList
 	

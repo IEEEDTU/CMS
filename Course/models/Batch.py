@@ -16,7 +16,7 @@ class BatchManager(models.Manager):
 	def deleteBatch(self, request):
 		B = Batch.objects.filter(batchId = request['batchId'])
 		B = B.get(batchType = request['batchType'])
-		B = B.delete():
+		B = B.delete()
 		return B
 	
 	def getBatchById(self, request):
@@ -28,30 +28,30 @@ class BatchManager(models.Manager):
 	def getBatchByDegree(self, degree):
 		B = Batch.objects.filter(degree = degree)
 		nameList = []
-		for b in B
+		for b in B:
 			nameList.append(b.batchId + "-" + b.batchType)
 		return nameList
 		
 	def getBatchByDept(self, dept):
 		B = Batch.objects.filter(dept = dept)
 		nameList = []
-		for b in B
+		for b in B:
 			nameList.append(b.batchId + "-" + b.batchType)
 		return nameList
 	
 class Batch(models.Model):
-    # Batch ID
-    batchId = models.CharField(max_length=20, primary_key=True, blank=False, null=False)
+	# Batch ID
+	batchId = models.CharField(max_length=20, primary_key=True, blank=False, null=False)
 	# Batch Type A or B
-    batchType = models.CharField(max_length=5, blank=False, null=False)
-    # Degree
-    degree = models.ForeignKey(Degree, on_delete = models.CASCADE, default=False)
+	batchType = models.CharField(max_length=5, blank=False, null=False)
+	# Degree
+	degree = models.ForeignKey(Degree, on_delete = models.CASCADE, default=False)
 	# Department
-    department = models.ForeignKey(Department, on_delete = models.CASCADE, default=False)
-    # Batch strength
-    strength = models.PositiveIntegerField()
+	department = models.ForeignKey(Department, on_delete = models.CASCADE, default=False)
+	# Batch strength
+	strength = models.PositiveIntegerField()
 
 	objects = BatchManager()
-    
-    def __str__(self):
-        return self.batchId
+	
+	def __str__(self):
+		return self.batchId
