@@ -1,4 +1,4 @@
-dic = {
+person0 = {
     "dtuRegId" : "DTU/2K12/B08/1501",
     "name" : Name(fname="Rahul",mname="",lname="Arora",preferredName="rahularora"),
     "permanentAdd" : Address(locality="B7 Gulabi Bagh",city="Delhi",state="Delhi",country="India",pincode=110001),
@@ -18,24 +18,24 @@ dic = {
     "motherName" : Name(fname="Def",mname="",lname="Arora",preferredName="defarora")
 }
 
-n={
+name0 = {
 	'name':{'fname':"ra",'mname':"ul",'lname':"ar",'preferredName':"rahul"},
 	'motherName':{'fname':"abc",'mname':"mn",'lname':"ar",'preferredName':"abcar"},
 	'fatherName':{'fname':"xyz",'mname':"fn",'lname':"ar",'preferredName':"xyzar"},
 }
 
-m={
+mobile0 = {
 	'personalMobile':{'countryCode':91,'mobileNum':9999955533},
 	'alternativeMobile':{'countryCode':91,'mobileNum':9999955533},
 }
 
-a={
+address0 = {
 	'permanentAdd':{'locality':"B8",'city':"delhi",'state':"delhi",'country':"india",'pincode':110001},
 	'presentAdd':{'locality':"B8",'city':"delhi",'state':"delhi",'country':"india",'pincode':110001},
 	'guardianAdd':{'locality':"B8",'city':"delhi",'state':"delhi",'country':"india",'pincode':110001},
 }
 
-deg = {
+degree0 = {
 	'degreeCode': 'BTECH',
 	'degreeName': 'Bachelors of Technology',
 	'degreeType': 'Regular',
@@ -50,7 +50,7 @@ d = {
 	'degreeCode' : 'BTECH'
 		}
 		
-b0 = {
+branch0 = {
 	'branchCode': 'SE',
 	'branchName': 'Software Engineering',
 	'seatsAvailable': '100',
@@ -58,7 +58,7 @@ b0 = {
 	'deptId': 'CSEX'
 	}
 
-c0 = {
+course0 = {
     "courseId":"SE202",
     "courseName":"Algorithms Design and Analysis",
     "courseType":"core",
@@ -73,7 +73,7 @@ c0 = {
     "branchCode":"SE"
 }
 
-c1 = {
+course1 = {
     "courseId":"SE203",
     "courseName":"MicroProcessor",
     "courseType":"core",
@@ -88,7 +88,7 @@ c1 = {
     "branchCode":"SE"
 }
 
-c2 = {
+course2 = {
     "courseId":"SE204",
     "courseName":"OOPS",
     "courseType":"core",
@@ -103,7 +103,7 @@ c2 = {
     "branchCode":"SE"
 }
 
-dpt = {
+dpt0 = {
 	'deptId': 'CSEX',
 	'deptName': 'Computer Science',
 	'hod': 'O.P. Verma',
@@ -113,3 +113,4 @@ dpt = {
 	'studentStrength': '300',
 	'facultyStrength': '20'
 	}
+

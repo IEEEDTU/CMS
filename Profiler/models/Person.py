@@ -4,21 +4,21 @@ class NameManager(models.Manager):
 	def addName(self, request):
 		"""add names in the database"""
 		nameObjs = []
-		nameObjs[0] = Name(
+		nameObjs.append(Name(
 			fname = request["name"]["fname"],
 			mname = request["name"]["mname"],
 			lname = request["name"]["lname"],
-			preferredName = request["name"]["preferredName"])
-		nameObjs[1] = Name(
+			preferredName = request["name"]["preferredName"]))
+		nameObjs.append( Name(
 			fname = request["fatherName"]["fname"],
 			mname = request["fatherName"]["mname"],
 			lname = request["fatherName"]["lname"],
-			preferredName = request["motherName"]["preferredName"])
-		nameObjs[2] = Name(
+			preferredName = request["fatherName"]["preferredName"]))
+		nameObjs.append( Name(
 			fname = request["motherName"]["fname"],
 			mname = request["motherName"]["mname"],
 			lname = request["motherName"]["lname"],
-			preferredName = request["motherName"]["preferredName"])
+			preferredName = request["motherName"]["preferredName"]))
 		
 		for name in nameObjs:
 			name.save()
@@ -42,7 +42,7 @@ class Name(models.Model):
 
 
 class AddressManager(models.Manager):
-	def __eq__(obj1, obj2, keys):
+	def __eq__(self, obj1, obj2, keys):
 		"""compares two objects on the basis of keys given"""
 		dict1 = {k:obj1.__dict__[k] for k in keys}
 		dict2 = {k:obj2.__dict__[k] for k in keys}
@@ -50,24 +50,25 @@ class AddressManager(models.Manager):
 
 	def addAddress(self, request):
 		""" add addresses in the database """
-		addressObjs[0] = Address(
+		addressObjs = []
+		addressObjs.append( Address(
 			locality = request['permanentAdd']['locality'],
 			city = request['permanentAdd']['city'],
 			state = request['permanentAdd']['state'],
 			country = request['permanentAdd']['country'],
-			pincode = request['permanentAdd']['pincode'])
-		addressObjs[1] = Address(
+			pincode = request['permanentAdd']['pincode']))
+		addressObjs.append( Address(
 			locality = request['presentAdd']['locality'],
 			city = request['presentAdd']['city'],
 			state = request['presentAdd']['state'],
 			country = request['presentAdd']['country'],
-			pincode = request['presentAdd']['pincode'])
-		addressObjs[2] = Address(
+			pincode = request['presentAdd']['pincode']))
+		addressObjs.append( Address(
 			locality = request['guardianAdd']['locality'],
 			city = request['guardianAdd']['city'],
 			state = request['guardianAdd']['state'],
 			country = request['guardianAdd']['country'],
-			pincode = request['guardianAdd']['pincode'])
+			pincode = request['guardianAdd']['pincode']))
 
 		objs = []
 		# 1st argument should be saved as it is
@@ -80,7 +81,7 @@ class AddressManager(models.Manager):
 		# checking 2nd argument
 		# if it is same as 1st then just append 1st argument in the object list 
 		# else save new item and append that in the object list
-		if(__eq__(addressObjs[0],addressObjs[1],keys)):
+		if(self.__eq__(addressObjs[0],addressObjs[1],keys)):
 			objs.append(addressObjs[0])
 		else:
 			addressObjs[1].save()
@@ -89,17 +90,14 @@ class AddressManager(models.Manager):
 		# checking 3rd argument
 		# if it is same as 1st or 2nd then just append respective argument in the object list 
 		# else save new item and append that in the object list
-		if(__eq__(addressObjs[0],addressObjs[2],keys)):
+		if(self.__eq__(addressObjs[0],addressObjs[2],keys)):
 			objs.append(addressObjs[0])
-		elif(__eq__(addressObjs[1],addressObjs[2],keys)):
+		elif(self.__eq__(addressObjs[1],addressObjs[2],keys)):
 			objs.append(addressObjs[1])
 		else:
 			addressObjs[2].save()
 			objs.append(addressObjs[2])    
 
-		for address in addressObjs:
-			address.save()
-		
 		return objs
 
 class Address(models.Model):
@@ -123,12 +121,13 @@ class Address(models.Model):
 class MobileManager(models.Manager):
 	def addContacts(self, request):
 		"""add contact numbers in the database"""
-		contactObjs[0] = Mobile(
+		contactObjs = []
+		contactObjs.append( Mobile(
 			countryCode = request["personalMobile"]["countryCode"],
-			mobileNum = request["personalMobile"]["mobileNum"])
-		contactObjs[0] = Mobile(
+			mobileNum = request["personalMobile"]["mobileNum"]))
+		contactObjs.append( Mobile(
 			countryCode = request["alternativeMobile"]["countryCode"],
-			mobileNum = request["alternativeMobile"]["mobileNum"])
+			mobileNum = request["alternativeMobile"]["mobileNum"]))
 		
 		for contact in contactObjs:
 			contact.save()

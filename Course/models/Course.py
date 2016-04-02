@@ -65,13 +65,14 @@ class CourseManager(models.Manager):
 
     def retrieveCourses(self, request):
         """ retrieve IDs of all the courses depending on the request """
-        """ note: degree is must """
-        """ other optional attributes: branch, semester, courseType """
+        """ note: degree, branch is must """
+        """ other optional attributes: semester, courseType """
         D = Degree.objects.get(degreeCode = request["degreeCode"], degreeType = request["degreeType"])
         objList = Course.objects.filter(degree = D)
-        if "branchCode" in request.keys():
-            B = Branch.objects.get(branchCode = request["branchCode"])
-            objList = objList.filter(branch = B)
+        
+        B = Branch.objects.get(branchCode = request["branchCode"])
+        objList = objList.filter(branch = B)
+
         if "semester" in request.keys():
             objList = objList.filter(semester = request["semester"])
         if "courseType" in request.keys():

@@ -60,8 +60,13 @@ class StudentManager(models.Manager):
 		return S
 	
 	def deleteStudent(self, request):
-		S = Student.objects.get(rollNo = request['rollNo'])
-		S = S.delete()
+		""" deletes student on basis of dtuRegId or rollNo """
+		if 'dtuRegId' in request.keys():
+			S = Student.objects.get(dtuRegId = request['dtuRegId'])
+			S = S.delete()
+		if 'rollNo' in request.keys():
+			S = Student.objects.get(dtuRegId = request['rollNo'])
+			S = S.delete()
 		return S
 
 class Student(Person):

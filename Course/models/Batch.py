@@ -4,37 +4,31 @@ from .AcademicDegree import *
 
 class BatchManager(models.Manager):
 	def addBatch(self, request):
+		""" add new batch """
 		B = Batch(
 			batchType = request['batchType'],
 			degree = request['degree'],
 			dept = request['dept'],
-			strength = request['strength']
-			)
+			strength = request['strength'])
 		B.save()
-		return True
+		return B
 		
 	def deleteBatch(self, request):
-		B = Batch.objects.filter(batchId = request['batchId'])
-		B = B.get(batchType = request['batchType'])
+		""" deletes existing batch on the basis of batch ID """
+		B = Batch.objects.get(batchId = request['batchId'])
 		B = B.delete()
 		return B
 	
 	def getBatchById(self, request):
-		""" get the batch object using the batchId """
-		B = Batch.objects.filter(batchId = request['batchId'])
-		B = B.get(batchType = request['batchType'])
+		""" get the batch object using the batch ID """
+		B = Batch.objects.get(batchId = request['batchId'])
 		return B
 	
-	def getBatchByDegree(self, degree):
-		B = Batch.objects.filter(degree = degree)
-		nameList = []
-		for b in B:
-			nameList.append(b.batchId + "-" + b.batchType)
-		return nameList
+	def getBatchesByType(self, request):
+		""" get batches by type """
+		B = Batch.objects.filter(batchType = request["batchType"])
 		
-	def getBatchByDept(self, dept):
-		B = Batch.objects.filter(dept = dept)
-		nameList = []
+		idList = []
 		for b in B:
 			nameList.append(b.batchId + "-" + b.batchType)
 		return nameList

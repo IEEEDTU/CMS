@@ -10,8 +10,7 @@ class DepartmentManager(models.Manager):
 			location = request['location'],
 			branchCount = request['branchCount'],
 			studentStrength = request['studentStrength'],
-			facultyStrength = request['facultyStrength']
-			)
+			facultyStrength = request['facultyStrength'])
 		D.save()
 		return D
 
