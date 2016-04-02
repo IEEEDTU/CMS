@@ -111,7 +111,7 @@ class Course(models.Model):
     def __str__(self):
         return self.courseId + " - " + self.courseName
 
-dic = {
+c0 = {
     "courseId":"SE202",
     "courseName":"Algorithms Design and Analysis",
     "courseType":"core",
@@ -121,7 +121,22 @@ dic = {
     "maxMarks":100.0,
     "minPassingMarks":40.0,
     "semester":2,
-    "degreeCode":"BTech",
+    "degreeCode":"BTECH",
+    "degreeType":"Regular",
+    "branchCode":"SE"
+}
+
+c1 = {
+    "courseId":"SE203",
+    "courseName":"MicroProcessor",
+    "courseType":"core",
+    "credits":30,
+    "sessMaxMarks":30.0,
+    "endMaxSemMarks":70.0,
+    "maxMarks":100.0,
+    "minPassingMarks":40.0,
+    "semester":2,
+    "degreeCode":"BTECH",
     "degreeType":"Regular",
     "branchCode":"SE"
 }

@@ -36,10 +36,10 @@ class Branch(models.Model):
     def __str__(self):
         return self.branchCode + " - " + self.branchName
 
-dic = {
+b0 = {
 	'branchCode': 'SE',
 	'branchName': 'Software Engineering',
 	'seatsAvailable': '100',
 	'degreeCode': 'BTECH',
-	'department': ''
+	'deptId': 'CSEX'
 	}
