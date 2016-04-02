@@ -17,3 +17,99 @@ dic = {
     "fatherName" : Name(fname="Abc",mname="",lname="Arora",preferredName="abcarora"),
     "motherName" : Name(fname="Def",mname="",lname="Arora",preferredName="defarora")
 }
+
+n={
+	'name':{'fname':"ra",'mname':"ul",'lname':"ar",'preferredName':"rahul"},
+	'motherName':{'fname':"abc",'mname':"mn",'lname':"ar",'preferredName':"abcar"},
+	'fatherName':{'fname':"xyz",'mname':"fn",'lname':"ar",'preferredName':"xyzar"},
+}
+
+m={
+	'personalMobile':{'countryCode':91,'mobileNum':9999955533},
+	'alternativeMobile':{'countryCode':91,'mobileNum':9999955533},
+}
+
+a={
+	'permanentAdd':{'locality':"B8",'city':"delhi",'state':"delhi",'country':"india",'pincode':110001},
+	'presentAdd':{'locality':"B8",'city':"delhi",'state':"delhi",'country':"india",'pincode':110001},
+	'guardianAdd':{'locality':"B8",'city':"delhi",'state':"delhi",'country':"india",'pincode':110001},
+}
+
+deg = {
+	'degreeCode': 'BTECH',
+	'degreeName': 'Bachelors of Technology',
+	'degreeType': 'Regular',
+	'duration': '4',
+	'maxCredit': '30',
+	'annualFee': '70000',
+	'lateFine': '500',
+	'admissionFee': '75000'
+	}
+
+d = {
+	'degreeCode' : 'BTECH'
+		}
+		
+b0 = {
+	'branchCode': 'SE',
+	'branchName': 'Software Engineering',
+	'seatsAvailable': '100',
+	'degreeCode': 'BTECH',
+	'deptId': 'CSEX'
+	}
+
+c0 = {
+    "courseId":"SE202",
+    "courseName":"Algorithms Design and Analysis",
+    "courseType":"core",
+    "credits":30,
+    "sessMaxMarks":30.0,
+    "endMaxSemMarks":70.0,
+    "maxMarks":100.0,
+    "minPassingMarks":40.0,
+    "semester":2,
+    "degreeCode":"BTECH",
+    "degreeType":"Regular",
+    "branchCode":"SE"
+}
+
+c1 = {
+    "courseId":"SE203",
+    "courseName":"MicroProcessor",
+    "courseType":"core",
+    "credits":30,
+    "sessMaxMarks":30.0,
+    "endMaxSemMarks":70.0,
+    "maxMarks":100.0,
+    "minPassingMarks":40.0,
+    "semester":2,
+    "degreeCode":"BTECH",
+    "degreeType":"Regular",
+    "branchCode":"SE"
+}
+
+c2 = {
+    "courseId":"SE204",
+    "courseName":"OOPS",
+    "courseType":"core",
+    "credits":30,
+    "sessMaxMarks":30.0,
+    "endMaxSemMarks":70.0,
+    "maxMarks":100.0,
+    "minPassingMarks":40.0,
+    "semester":2,
+    "degreeCode":"BTECH",
+    "degreeType":"Regular",
+    "branchCode":"SE"
+}
+
+dpt = {
+	'deptId': 'CSEX',
+	'deptName': 'Computer Science',
+	'hod': 'O.P. Verma',
+	'email': 'opverma@gmail.com',
+	'location': 'DTU',
+	'branchCount': '3',
+	'studentStrength': '300',
+	'facultyStrength': '20'
+	}

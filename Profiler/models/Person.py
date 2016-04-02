@@ -1,24 +1,24 @@
 ﻿from django.db import models
 
 class NameManager(models.Manager):
-	"""add names in the database"""
 	def addName(self, request):
+		"""add names in the database"""
 		nameObjs = []
 		nameObjs[0] = Name(
-			fname = request["name"][0],
-			mname = request["name"][1],
-			lname = request["name"][2],
-			preferredName = request["name"][3])
+			fname = request["name"]["fname"],
+			mname = request["name"]["mname"],
+			lname = request["name"]["lname"],
+			preferredName = request["name"]["preferredName"])
 		nameObjs[1] = Name(
-			fname = request["fatherName"][0],
-			mname = request["fatherName"][1],
-			lname = request["fatherName"][2],
-			preferredName = request["motherName"][3])
+			fname = request["fatherName"]["fname"],
+			mname = request["fatherName"]["mname"],
+			lname = request["fatherName"]["lname"],
+			preferredName = request["motherName"]["preferredName"])
 		nameObjs[2] = Name(
-			fname = request["motherName"][0],
-			mname = request["motherName"][1],
-			lname = request["motherName"][2],
-			preferredName = request["motherName"][3])
+			fname = request["motherName"]["fname"],
+			mname = request["motherName"]["mname"],
+			lname = request["motherName"]["lname"],
+			preferredName = request["motherName"]["preferredName"])
 		
 		for name in nameObjs:
 			name.save()
@@ -33,26 +33,74 @@ class Name(models.Model):
 	# Last Name
 	lname = models.CharField(max_length=100, blank=True, null=True)
 	# Preferred Name
-	preferredName = models.CharField(max_length=100, blank=False, null=False)
+	preferredName = models.CharField(max_length=100, blank=False, null=False, unique=True)
 	
 	objects = NameManager()
 	
 	def __str__(self):
 		return self.preferredName
 
+
 class AddressManager(models.Manager):
+	def __eq__(obj1, obj2, keys):
+		"""compares two objects on the basis of keys given"""
+		dict1 = {k:obj1.__dict__[k] for k in keys}
+		dict2 = {k:obj2.__dict__[k] for k in keys}
+		return dict1==dict2
+
 	def addAddress(self, request):
-		A = []
-		for i in range(0,3):
-			A[i] = Address(
-				locality = request['locality'][i],
-				city = request['city'][i],
-				state = request['state'][i],
-				country = request['country'][i],
-				pincode = request['pincode'][i]
-				)
-			A[i].save
-		return A
+		""" add addresses in the database """
+		addressObjs[0] = Address(
+			locality = request['permanentAdd']['locality'],
+			city = request['permanentAdd']['city'],
+			state = request['permanentAdd']['state'],
+			country = request['permanentAdd']['country'],
+			pincode = request['permanentAdd']['pincode'])
+		addressObjs[1] = Address(
+			locality = request['presentAdd']['locality'],
+			city = request['presentAdd']['city'],
+			state = request['presentAdd']['state'],
+			country = request['presentAdd']['country'],
+			pincode = request['presentAdd']['pincode'])
+		addressObjs[2] = Address(
+			locality = request['guardianAdd']['locality'],
+			city = request['guardianAdd']['city'],
+			state = request['guardianAdd']['state'],
+			country = request['guardianAdd']['country'],
+			pincode = request['guardianAdd']['pincode'])
+
+		objs = []
+		# 1st argument should be saved as it is
+		addressObjs[0].save()
+		objs.append(addressObjs[0])
+		
+		# keys to be used for comparison
+		keys = ["locality", "city", "state", "country", "pincode"]
+		
+		# checking 2nd argument
+		# if it is same as 1st then just append 1st argument in the object list 
+		# else save new item and append that in the object list
+		if(__eq__(addressObjs[0],addressObjs[1],keys)):
+			objs.append(addressObjs[0])
+		else:
+			addressObjs[1].save()
+			objs.append(addressObjs[1])
+
+		# checking 3rd argument
+		# if it is same as 1st or 2nd then just append respective argument in the object list 
+		# else save new item and append that in the object list
+		if(__eq__(addressObjs[0],addressObjs[2],keys)):
+			objs.append(addressObjs[0])
+		elif(__eq__(addressObjs[1],addressObjs[2],keys)):
+			objs.append(addressObjs[1])
+		else:
+			addressObjs[2].save()
+			objs.append(addressObjs[2])    
+
+		for address in addressObjs:
+			address.save()
+		
+		return objs
 
 class Address(models.Model):
 	# Locality/Street/Area
@@ -71,19 +119,22 @@ class Address(models.Model):
 	def __str__(self):
 		return self.locality + "," + self.city + "," + self.state + "," + self.country
 
+
 class MobileManager(models.Manager):
 	def addContacts(self, request):
 		"""add contact numbers in the database"""
-		contactObjs = []
-		for i in range(0,3):
-			contactObjs[i] = Mobile(
-				countryCode = request[countryCode][i],
-				mobileNum = request[mobileNum][i]
-				)
-			contactObjs[i].save()
+		contactObjs[0] = Mobile(
+			countryCode = request["personalMobile"]["countryCode"],
+			mobileNum = request["personalMobile"]["mobileNum"])
+		contactObjs[0] = Mobile(
+			countryCode = request["alternativeMobile"]["countryCode"],
+			mobileNum = request["alternativeMobile"]["mobileNum"])
+		
+		for contact in contactObjs:
+			contact.save()
+		
 		return contactObjs
 	
-
 class Mobile(models.Model):
 	# Country Code
 	countryCode = models.PositiveIntegerField(blank=False, null=False)
@@ -94,6 +145,7 @@ class Mobile(models.Model):
 	
 	def __str__(self):
 		return str(self.countryCode) + "-" + str(self.mobileNum)
+
 
 class Person(models.Model):
 	# DTU Registration ID
@@ -140,9 +192,3 @@ class Person(models.Model):
 	
 	class Meta:
 		abstract = True
-
-n = {'name':['Vaibhav', 'xyz', 'sawhney', 'pinky'],
-	'fatherName':['Anil','xyz','sawhney', 'papa'],
-	'motherName':['Sushil','xyz','sawhney', 'mum']
-	}
-	

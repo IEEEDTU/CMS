@@ -46,18 +46,3 @@ class Degree(models.Model):
     
     def __str__(self):
         return self.degreeCode + " - " + self.degreeName + " (" + self.degreeType + ")"
-
-deg = {
-	'degreeCode': 'BTECH',
-	'degreeName': 'Bachelors of Technology',
-	'degreeType': 'Regular',
-	'duration': '4',
-	'maxCredit': '30',
-	'annualFee': '70000',
-	'lateFine': '500',
-	'admissionFee': '75000'
-	}
-
-d = {
-	'degreeCode' : 'BTECH'
-		}
