@@ -13,8 +13,6 @@ class Faculty(Person):
     jobType = models.CharField(max_length=50, blank=False, null=False)
     # Department
     department = models.ForeignKey(Department, on_delete = models.CASCADE, default=False)
-	# DTU Registration ID
-    dtuRegID = models.CharField(max_length=10, blank=False, null=False)
 	# Salary
     # salary = models.ForeignKey(Salary, on_delete=models.CASCADE)
     # Library ID

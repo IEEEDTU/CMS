@@ -20,9 +20,9 @@ class NameManager(models.Manager):
 			lname = request["motherName"][2],
 			preferredName = request["motherName"][3])
 		
-		for i in range(0,3):
-			nameObjs[i].save()
-		
+		for name in nameObjs:
+			name.save()
+			
 		return nameObjs
 
 class Name(models.Model):
@@ -140,3 +140,9 @@ class Person(models.Model):
 	
 	class Meta:
 		abstract = True
+
+n = {'name':['Vaibhav', 'xyz', 'sawhney', 'pinky'],
+	'fatherName':['Anil','xyz','sawhney', 'papa'],
+	'motherName':['Sushil','xyz','sawhney', 'mum']
+	}
+	
