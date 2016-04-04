@@ -1,30 +1,20 @@
-"""
-title
-description
-highlight
-startdate
-end date
-type
-team size
-"""
-
 from django.db import models
-from Course.models import Student
+from Profiler.models import Student
 
 class ProjectManager(models.Manager):
 	def addProject(self,request):
 		"""Adds New Project"""
 		studentObj = Student.objects.getStudentByRegId(request)
 		P = Project(
-				student = studentObj,
-				title = request['title'],
-				description = request['description'],
-				highlight = request['highlight'],
-				startDate = request['startDate'],
-				endDate = request['endDate'],
-				projectType = request['projectType'],
-				teamSize = request['teamSize']
-			)
+			student = studentObj,
+			title = request['title'],
+			description = request['description'],
+			highlight = request['highlight'],
+			startDate = request['startDate'],
+			endDate = request['endDate'],
+			projectType = request['projectType'],
+			teamSize = request['teamSize']
+		)
 		P.save()
 		return P
 
@@ -35,24 +25,24 @@ class ProjectManager(models.Manager):
 
 	def retrieveProjects(self,request):
 		""" retrieve IDs of all the projects depending on the request """
-        """ note: student is must """
-        """ other optional attributes: projectType , startDate """
-        S = Student.objects.getStudentByRegId(request)
-        objList = Project.objects.filter(student=S)
+		""" note: student is must """
+		""" other optional attributes: projectType , startDate """
+		S = Student.objects.getStudentByRegId(request)
+		objList = Project.objects.filter(student=S)
 
-        if projectType in request.keys():
-        	objList = objList.filter(projectType = request['projectType'])
+		if projectType in request.keys():
+			objList = objList.filter(projectType = request['projectType'])
 
-        idList = []
-        for obj in objList:
-            idList.append(obj.id)
-        return idList
+		idList = []
+		for obj in objList:
+			idList.append(obj.id)
+		return idList
 
 	def deleteProject(self, request):
 		"""deletes project"""
 		P = Project.objects.get(request['id'])
 		P = P.delete()
-		return S
+		return P
 
 class Project(models.Model):
 
@@ -61,9 +51,9 @@ class Project(models.Model):
 	MINOR = 'MN'
 	SIDE = 'SD'
 	PROJECT_CHOICES = (
-		(MAJOR,'Major'),
-		(MINOR,'Minor'),
-		(SIDE,'Side'),
+	(MAJOR,'Major'),
+	(MINOR,'Minor'),
+	(SIDE,'Side'),
 	)
 
 	#Student
@@ -75,17 +65,18 @@ class Project(models.Model):
 	#Highlight of Project
 	highlight = models.CharField(max_length=100, blank=False, null=False)
 	#Start Date of Project
-	startDate = models.DateField()
+	startDate = models.DateField(null=False,blank=False)
 	#End Date of Project
-	endDate = models.DateField()
+	endDate = models.DateField(null=False,blank=False)
 	#Type of Project
 	projectType = models.CharField(max_length=2,
-								   choices = PROJECT_CHOICES,
-								   default = MAJOR)
+									choices = PROJECT_CHOICES,
+									default = MAJOR)
 	#Size of Team
 	teamSize = models.PositiveIntegerField()
 
 	objects = ProjectManager()
-    
-    def __str__(self):
-        return self.title
+	
+	def __str__(self):
+		return self.title
+
