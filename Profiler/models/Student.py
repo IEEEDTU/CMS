@@ -88,4 +88,5 @@ class Student(Person):
 	objects = StudentManager()
 	
 	def __str__(self):
-		return self.rollNo + " - " + self.name
+		return self.rollNo + " - " + getattr(self.name, 'fname')
+	
