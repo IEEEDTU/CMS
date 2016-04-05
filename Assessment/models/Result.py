@@ -47,5 +47,5 @@ class Result(models.Model):
     objects = ResultManager()
 
     def __str__(self):
-        return self.student + "_" + str(self.semester) + " : " + str(self.totalScore)
+        return str(self.student) + "_" + str(self.semester) + " : " + str(self.totalScore)
 
