@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'Course',
     'NewsFeed.apps.NewsfeedConfig',
     'Profiler',
+	'Resource',
     'Workspace.apps.WorkspaceConfig',
     'django.contrib.admin',
     'django.contrib.auth',
