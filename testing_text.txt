@@ -1,0 +1,149 @@
+person0 = {
+    "dtuRegId" : "DTU/2K12/B08/1501",
+	"name" : { 'fname':"Rahul", 'mname':"", 'lname':"Arora", 'preferredName':"rahularora" },
+	'permanentAdd':{'locality':"A8",'city':"Delhi",'state':"Delhi",'country':"India",'pincode':110001},
+	'presentAdd':{'locality':"A8",'city':"delhi",'state':"delhi",'country':"india",'pincode':110001},
+	'guardianAdd':{'locality':"A8",'city':"delhi",'state':"delhi",'country':"india",'pincode':110001},
+	"personalMobile" : 
+	{ 'countryCode':91, 'mobileNum':9999955566}
+	,
+	"alternativeMobile" : 
+	{ 'countryCode':91, 'mobileNum':9999955566}
+	,
+	"personalEmail" : "rahularora@gmail.com",
+	"alternativeEmail" : "rahularora@gmail.com",
+	"dateOfBirth" : "1994-01-01",
+	"gender" : "M",
+	"category" : "GEN",
+	"nationality" : "Indian",
+	"religion" : "Sikh",
+	"dormitory" : 1,
+	"fatherName" : { 'fname':"Abc", 'mname':"", 'lname':"Arora", 'preferredName':"abcarora" },
+	"motherName" : { 'fname':"Def", 'mname':"", 'lname':"Arora"
+}
+
+student0 = {
+	"dtuRegId" : "DTU/2K12/B08/1501",
+	"name" : { 'fname':"Rahul", 'mname':"", 'lname':"Arora", 'preferredName':"rahularora" },
+	'permanentAdd':{'locality':"A8",'city':"Delhi",'state':"Delhi",'country':"India",'pincode':110001},
+	'presentAdd':{'locality':"A8",'city':"delhi",'state':"delhi",'country':"india",'pincode':110001},
+	'guardianAdd':{'locality':"A8",'city':"delhi",'state':"delhi",'country':"india",'pincode':110001},
+	"personalMobile" : 
+	{ 'countryCode':91, 'mobileNum':9999955566}
+	,
+	"alternativeMobile" : 
+	{ 'countryCode':91, 'mobileNum':9999955566}
+	,
+	"personalEmail" : "rahularora@gmail.com",
+	"alternativeEmail" : "rahularora@gmail.com",
+	"dateOfBirth" : "1994-01-01",
+	"gender" : "M",
+	"category" : "GEN",
+	"nationality" : "Indian",
+	"religion" : "Sikh",
+	"dormitory" : 1,
+	"fatherName" : { 'fname':"Abc", 'mname':"", 'lname':"Arora", 'preferredName':"abcarora" },
+	"motherName" : { 'fname':"Def", 'mname':"", 'lname':"Arora", 'preferredName':"defarora" },
+	"rollNo" : "2K12/SE/065",
+	"branchCode" : "SE",
+	"degreeCode" : "BTECH",
+	"admissionYear":2012,
+	"password":"qwerty"
+}
+
+name0 = {
+	'name':{'fname':"ra",'mname':"ul",'lname':"ar",'preferredName':"rahul"},
+	'motherName':{'fname':"abc",'mname':"mn",'lname':"ar",'preferredName':"abcar"},
+	'fatherName':{'fname':"xyz",'mname':"fn",'lname':"ar",'preferredName':"xyzar"},
+}
+
+mobile0 = {
+	'personalMobile':{'countryCode':91,'mobileNum':9999955533},
+	'alternativeMobile':{'countryCode':91,'mobileNum':9999955533},
+}
+
+address0 = {
+	'permanentAdd':{'locality':"B8",'city':"delhi",'state':"delhi",'country':"india",'pincode':110001},
+	'presentAdd':{'locality':"B8",'city':"delhi",'state':"delhi",'country':"india",'pincode':110001},
+	'guardianAdd':{'locality':"B8",'city':"delhi",'state':"delhi",'country':"india",'pincode':110001},
+}
+
+degree0 = {
+	'degreeCode': 'BTECH',
+	'degreeName': 'Bachelors of Technology',
+	'degreeType': 'Regular',
+	'duration': '4',
+	'maxCredit': '30',
+	'annualFee': '70000',
+	'lateFine': '500',
+	'admissionFee': '75000'
+	}
+
+d = {
+	'degreeCode' : 'BTECH'
+		}
+		
+branch0 = {
+	'branchCode': 'SE',
+	'branchName': 'Software Engineering',
+	'seatsAvailable': '100',
+	'degreeCode': 'BTECH',
+	'deptId': 'CSEX'
+	}
+
+course0 = {
+    "courseId":"SE202",
+    "courseName":"Algorithms Design and Analysis",
+    "courseType":"core",
+    "credits":30,
+    "sessMaxMarks":30.0,
+    "endMaxSemMarks":70.0,
+    "maxMarks":100.0,
+    "minPassingMarks":40.0,
+    "semester":2,
+    "degreeCode":"BTECH",
+    "degreeType":"Regular",
+    "branchCode":"SE"
+}
+
+course1 = {
+    "courseId":"SE203",
+    "courseName":"MicroProcessor",
+    "courseType":"core",
+    "credits":30,
+    "sessMaxMarks":30.0,
+    "endMaxSemMarks":70.0,
+    "maxMarks":100.0,
+    "minPassingMarks":40.0,
+    "semester":2,
+    "degreeCode":"BTECH",
+    "degreeType":"Regular",
+    "branchCode":"SE"
+}
+
+course2 = {
+    "courseId":"SE204",
+    "courseName":"OOPS",
+    "courseType":"core",
+    "credits":30,
+    "sessMaxMarks":30.0,
+    "endMaxSemMarks":70.0,
+    "maxMarks":100.0,
+    "minPassingMarks":40.0,
+    "semester":2,
+    "degreeCode":"BTECH",
+    "degreeType":"Regular",
+    "branchCode":"SE"
+}
+
+dpt0 = {
+	'deptId': 'CSEX',
+	'deptName': 'Computer Science',
+	'hod': 'O.P. Verma',
+	'email': 'opverma@gmail.com',
+	'location': 'DTU',
+	'branchCount': '3',
+	'studentStrength': '300',
+	'facultyStrength': '20'
+	}
+
