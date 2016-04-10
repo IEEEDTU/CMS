@@ -42,12 +42,12 @@ class FacultyManager(models.Manager):
         """ To get the object of student by its dtuRegId """
         F = Faculty.objects.get(dtuRegId = request["dtuRegId"])
         return F
-    
+
     def getFacultyByFacultyId(self, request):
         """ To get the object of student by its dtuRegId """
         F = Faculty.objects.get(facultyId = request["facultyId"])
         return F
-    
+
     def getFacultyByName(self, request):
         """ To get the objects of student by its name """
         N = Name.objects.get(preferredName = request['preferredName'])
@@ -58,12 +58,12 @@ class FacultyManager(models.Manager):
         #   for s in S:
         #       rollNoList.append(s.rollNo)
         return F
-    
+
     def deleteFaculty(self, request):
         if "dtuRegId" in request.keys():
-            Faculty.objects.get(dtuRegId = request['dtuRegId'])
-        if "facultyId" in request.keys():
-            Faculty.objects.get(facultyId = request['facultyId'])
+            F = Faculty.objects.get(dtuRegId = request['dtuRegId'])
+        elif "facultyId" in request.keys():
+            F = Faculty.objects.get(facultyId = request['facultyId'])
         F = F.delete()
         return F
 
@@ -86,7 +86,7 @@ class FacultyManager(models.Manager):
 
         return idList
 
-        
+
 class Faculty(Person):
     # Faculty's Identity
     facultyId = models.CharField(max_length=50, primary_key=False, blank=False, null=False)
@@ -108,5 +108,5 @@ class Faculty(Person):
     objects = FacultyManager()
 
     def __str__(self):
-        return self.facultyId + " - " + self.name
+        return self.facultyId + " - " + str(self.name)
 

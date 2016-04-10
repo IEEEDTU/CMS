@@ -1,6 +1,7 @@
 ﻿from django.db import models
 from .Department import *
 
+
 class Laboratory(models.Model):
     # Laboratory code
     labCode = models.CharField(max_length=10, primary_key=True, blank=False, null=False)
@@ -14,6 +15,6 @@ class Laboratory(models.Model):
     location = models.CharField(max_length=100)
     # Capacity
     capacity = models.PositiveIntegerField()
-    
+
     def __str__(self):
         return self.labCode + " - " + self.labName
