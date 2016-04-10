@@ -147,3 +147,13 @@ dpt0 = {
 	'facultyStrength': '20'
 	}
 
+project0 = {
+    'dtuRegId' : "DTU/2K12/B08/1501",
+    'title' : "Course management system",
+    'description' : "none",
+    'highlight' : "Published in INDICON",
+    'startDate' : "2012-05-01",
+    'endDate' : "2012-07-20",
+    'projectType' : "Research",
+    'teamSize' : 3
+}
