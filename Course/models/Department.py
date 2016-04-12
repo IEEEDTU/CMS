@@ -4,6 +4,7 @@
 
 class DepartmentManager(models.Manager):
     def addDepartment(self, request):
+        """ adds new department """
         D = Department(
             deptId=request['deptId'],
             deptName=request['deptName'],
@@ -16,6 +17,16 @@ class DepartmentManager(models.Manager):
         D.save()
         return D
 
+    def getDepartmentById(self, request):
+        """ get the department details on the basis of deptId """
+        D = Department.objects.get(deptId=request["deptId"])
+        return D
+
+    def deleteDepartment(self, request):
+        """ get the department details on the basis of deptId """
+        D = Department.objects.get(deptId=request["deptId"])
+        D = D.delete()
+        return D
 
 class Department(models.Model):
     # Department ID

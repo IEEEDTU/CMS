@@ -46,7 +46,7 @@ class StudentManager(models.Manager):
 
     def getStudentByRollNo(self, request):
         """ To get the object of student by its rollNo """
-        S = Student.objects.get(dtuRegId=request["rollNo"])
+        S = Student.objects.get(rollNo=request["rollNo"])
         return S
 
     def getStudentByName(self, request):
@@ -90,4 +90,4 @@ class Student(Person):
     objects = StudentManager()
 
     def __str__(self):
-        return self.rollNo + " - " + getattr(self.name, 'fname')
+        return self.rollNo + " - " + str(self.name)

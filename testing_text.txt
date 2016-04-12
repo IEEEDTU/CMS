@@ -157,3 +157,39 @@ project0 = {
     'projectType' : "Research",
     'teamSize' : 3
 }
+
+
+ann0 = {
+    'title': "Bla Bla Announcement",
+    'content': "This is a Bla Bla event",
+    'id': 1
+}
+
+nt0 = {
+    'subject':"Examination postponed",
+    'issuingAuthority':"Academic department",
+    'fileLink':"http://www.facebook.com"
+}
+nt1 = {
+    'subject':"Examination postponed",
+    'issuingAuthority':"Academic department",
+    'fileLink':"http://www.facebook.com",
+    'degreeCode':"BTech",
+    'degreeType':"Regular",
+    'branchCode':"SE",
+    'deptId':"CSE"
+}
+
+news0 = {
+    'headline': "Akash Tayal got rank 1 in GRE",
+    'description': "Akash Tayal, a DTUite , got rank 1 in GRE",
+    'facultyId': "CSE/030",
+}
+
+news1 = {
+    'headline': "Akash Tayal got rank 1 in GRE",
+    'description': "Akash Tayal, a DTUite , got rank 1 in GRE",
+    'image': "www.facebook.com",
+    'link': "www.google.com",
+    'rollNo': "2K12/SE/001",
+}
