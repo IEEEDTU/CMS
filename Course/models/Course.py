@@ -79,10 +79,11 @@ class CourseManager(models.Manager):
         if "courseType" in request.keys():
             objList = objList.filter(courseType=request["courseType"])
 
-        idList = []
-        for obj in objList:
-            idList.append(obj.courseId)
-        return idList
+        # idList = []
+        # for obj in objList:
+        #     idList.append(obj.courseId)
+        # return idList
+        return objList
 
 
 class Course(models.Model):

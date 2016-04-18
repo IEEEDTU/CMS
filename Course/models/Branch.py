@@ -48,11 +48,11 @@ class BranchManager(models.Manager):
             D = Department.objects.get(deptId=request["deptId"])
             objList = objList.filter(department=D)
 
-        idList = []
-        for obj in objList:
-            idList.append(obj.courseId)
-        return idList
-
+        # idList = []
+        # for obj in objList:
+        #     idList.append(obj.courseId)
+        # return idList
+        return objList
 
 class Branch(models.Model):
     # Branch code
