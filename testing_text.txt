@@ -193,3 +193,38 @@ news1 = {
     'link': "www.google.com",
     'rollNo': "2K12/SE/001",
 }
+
+
+book0 = {
+    'courseId': 'SE202',
+    'dtuRegId': 'DTU/CSE/030',
+    'bookType': 0,
+    'bookName': 'Guide to Algorithms',
+    'authors': 'R.S. Pillai',
+    'edition': 2,
+    'publisher': 'McGraw Hill'
+}
+
+pub0 = {
+    'courseId': 'SE202',
+    'dtuRegId': 'DTU/CSE/030',
+    'title':"Intrusion detection and prevention",
+    'authors':"Avijeet, Himanshu",
+    'publicationDate':"2012-04-01",
+    'organization':"IEEE",
+    'link':"www.google.com"
+}
+
+doc0 = {
+    'courseId': 'SE202',
+    'dtuRegId': 'DTU/CSE/030',
+    'documentType':4,
+    'source':"machine_learning.pdf"
+}
+
+web0 = {
+    'resourceId':10,
+    'courseId': 'SE202',
+    'dtuRegId': 'DTU/CSE/030',
+    'link':"www.dropbox.com"
+}

@@ -43,15 +43,15 @@ class BranchManager(models.Manager):
         """ note: degree is must """
         """ other optional attributes: department """
         D = Degree.objects.get(degreeCode=request["degreeCode"], degreeType=request["degreeType"])
-        objList = Course.objects.filter(degree=D)
+        B = Branch.objects.filter(degree=D)
         if "deptId" in request.keys():
             D = Department.objects.get(deptId=request["deptId"])
-            objList = objList.filter(department=D)
+            B = B.filter(department=D)
 
-        idList = []
-        for obj in objList:
-            idList.append(obj.courseId)
-        return idList
+        # idList = []
+        # for obj in B:
+        #    idList.append(obj.courseId)
+        return B
 
 
 class Branch(models.Model):

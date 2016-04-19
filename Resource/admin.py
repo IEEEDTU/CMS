@@ -1,8 +1,8 @@
-"""
 from django.contrib import admin
+from .models import Resource, Book, Publication, Document, WebLink
 
-# Register your models here.
-from .models import Book
-
+admin.site.register(Resource)
 admin.site.register(Book)
-"""
+admin.site.register(Publication)
+admin.site.register(Document)
+admin.site.register(WebLink)

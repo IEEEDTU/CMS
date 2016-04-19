@@ -8,30 +8,16 @@ import json
 
 @csrf_exempt
 @require_GET
-def retrieveBatches(request):
+def retrieveCourseGroups(request):
 	response_data = {}
 	try:
-		B = Batch.objects.retrieveBatches(request.GET)
+		C = CourseGroup.objects.retrieveCourseGroups(request.GET)
 	except Exception as e:
 		response_data['success'] = '0'
 	else :
 		response_data['success'] = '1'
-		data = serializers.serialize('json', B)
+		data = serializers.serialize('json', C)
 		response_data['branches'] = json.loads(data)
 	
 	return JsonResponse(response_data)
 
-@csrf_exempt
-@require_GET
-def getBatchByCode(request):
-	response_data = {}
-	try:
-		B = Batch.objects.getBatchByCode(request.GET)
-	except Exception as e:
-		response_data["success"] = 0
-	else:
-		response_data["success"] = 1
-		data = serializers.serialize('json', [B, ])
-		response_data["course"] = json.loads(data)
-
-	return JsonResponse(response_data)

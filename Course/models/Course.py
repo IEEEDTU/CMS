@@ -58,31 +58,31 @@ class CourseManager(models.Manager):
 
     def getCoursesByName(self, request):
         """ get the course IDs on the basis of course name """
-        objList = Course.objects.filter(courseName=request["courseName"])
-        idList = []
-        for obj in objList:
-            idList.append(obj.courseId)
-        return idList
+        C = Course.objects.filter(courseName=request["courseName"])
+        # idList = []
+        # for obj in C:
+        #    idList.append(obj.courseId)
+        return C
 
     def retrieveCourses(self, request):
         """ retrieve IDs of all the courses depending on the request """
         """ note: degree, branch is must """
         """ other optional attributes: semester, courseType """
         D = Degree.objects.get(degreeCode=request["degreeCode"], degreeType=request["degreeType"])
-        objList = Course.objects.filter(degree=D)
+        C = Course.objects.filter(degree=D)
 
         B = Branch.objects.get(branchCode=request["branchCode"])
-        objList = objList.filter(branch=B)
+        C = C.filter(branch=B)
 
         if "semester" in request.keys():
-            objList = objList.filter(semester=request["semester"])
+            C = C.filter(semester=request["semester"])
         if "courseType" in request.keys():
-            objList = objList.filter(courseType=request["courseType"])
+            C = C.filter(courseType=request["courseType"])
 
-        idList = []
-        for obj in objList:
-            idList.append(obj.courseId)
-        return idList
+        # idList = []
+        # for obj in C:
+        #    idList.append(obj.courseId)
+        return C
 
 
 class Course(models.Model):
