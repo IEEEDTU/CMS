@@ -58,6 +58,26 @@ class EventManager(models.Manager):
         E.save()
         return E
 
+    def getEventById(self, request):
+        """ get event details based on event id """
+        E = Event.objects.get(id=request['id'])
+        return E
+
+    def retrieveEvents(self, request):
+        """ retrieve all the events """
+        """ optional fields: eventName, startDateTime, endDateTime, organisedBy """
+        E = Event.objects.all()
+        if 'eventName' in request.keys():
+            E = E.filter(eventName=request['eventName'])
+        if 'startDateTime' in request.keys():
+            E = E.filter(startDateTime=request['startDateTime'])
+        if 'endDateTime' in request.keys():
+            E = E.filter(endDateTime=request['endDateTime'])
+        if 'organisedBy' in request.keys():
+            E = E.filter(organisedBy=request['organisedBy'])
+
+        return E
+
     def deleteEvent(self, request):
         """ deletes an existing event """
         E = Event.objects.get(id=request['id'])
@@ -91,25 +111,3 @@ class Event(models.Model):
 
     def __str__(self):
         return self.eventName + "-"
-
-
-event0 = {
-    'eventName': 'Data Mining Workshop',
-    'startDateTime': '2016-04-04 20:04:50.308998',
-    'description': 'Data Mining Workshop by Vaibhav Sawhney',
-    'organisedBy': 'IEEEDTU',
-    'mobile': {'countryCode': 21, 'mobileNum': 9999955533},
-    'email': 'example@example.com',
-}
-event1 = {
-    'eventName': 'Data Mining Workshop',
-    'startDateTime': '2016-04-05 20:04:50.308998',
-    'endDateTime': '2016-04-04 20:04:50.308998',
-    'description': 'Data Mining Workshop by Vaibhav Sawhney',
-    'organisedBy': 'IEEEDTU',
-    'mobile': {'countryCode': 21, 'mobileNum': 9999955533},
-    'email': 'example@example.com',
-    'fbEvent': 'www.facebook.com',
-    'website': 'www.ieee.dcetech.com',
-    'image': 'drive.google.co.in/image1'
-}

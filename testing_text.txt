@@ -228,3 +228,24 @@ web0 = {
     'dtuRegId': 'DTU/CSE/030',
     'link':"www.dropbox.com"
 }
+
+event0 = {
+    'eventName': 'Data Mining Workshop',
+    'startDateTime': '2016-04-04 20:04:50.308998',
+    'description': 'Data Mining Workshop by Vaibhav Sawhney',
+    'organisedBy': 'IEEEDTU',
+    'mobile': {'countryCode': 21, 'mobileNum': 9999955533},
+    'email': 'example@example.com',
+}
+event1 = {
+    'eventName': 'Data Mining Workshop',
+    'startDateTime': '2016-04-05 20:04:50.308998',
+    'endDateTime': '2016-04-04 20:04:50.308998',
+    'description': 'Data Mining Workshop by Vaibhav Sawhney',
+    'organisedBy': 'IEEEDTU',
+    'mobile': {'countryCode': 21, 'mobileNum': 9999955533},
+    'email': 'example@example.com',
+    'fbEvent': 'www.facebook.com',
+    'website': 'www.ieee.dcetech.com',
+    'image': 'drive.google.co.in/image1'
+}

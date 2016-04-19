@@ -25,6 +25,16 @@ class AnnouncementManager(models.Manager):
         A.save()
         return A
 
+    def getAnnouncementById(self, request):
+        """ get event details based on announcement id """
+        A = Announcement.objects.get(id=request['id'])
+        return A
+
+    def retrieveAnnouncements(self, request):
+        """ retrieve all announcements of a particular course group """
+        CG = CourseGroup.objects.getCourseGroup(request)
+        A = Announcement.objects.filter(courseGroup=CG)
+
     def deleteAnnouncement(self, request):
         """ deletes an existing announcement """
         A = Announcement.objects.get(id=request['id'])
@@ -46,4 +56,3 @@ class Announcement(models.Model):
 
     def __str__(self):
         return self.title
-

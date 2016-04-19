@@ -19,10 +19,19 @@ class NewsManager(models.Manager):
         )
 
         if "image" in request.keys():
-            N.image=request['image']
+            N.image = request['image']
         if "link" in request.keys():
-            link=request['link']
+            link = request['link']
 
+        N.save()
+        return N
+
+    def editNews(self, request):
+        """ edit the news details """
+        """ only headline and description are editable """
+        N = News.objects.get(id=request['id'])
+        N.headline = request['headline']
+        N.description = request['description']
         N.save()
         return N
 
@@ -32,7 +41,39 @@ class NewsManager(models.Manager):
         return N
 
     def retrieveNews(self, request):
-        pass
+        """ retrieve all the news """
+        """ optional fields: headline, date, publishedBy """
+        N = News.objects.all()
+        if 'headline' in request.keys():
+            N = N.filter(headline=request['headline'])
+        if 'date' in request.keys():
+            N = N.filter(date=request['date'])
+        if 'publishedBy' in request.keys():
+            N = N.filter(publishedBy=request['publishedBy'])
+
+        return N
+
+    def retrieveLatestNews(self, request):
+        """ retrieves latest news """
+        """ criteria is to just return top 10 news """
+        lastTen = News.objects.filter(date=request['since']).order_by('-date')[:10]
+        return lastTen
+
+    # def retrieveMoreNews(self, request):
+    #     N = News.objects.all()
+    #     paginator = Paginator(contact_list, request['rowsPerPage'])
+    #
+    #     page = request['page']
+    #     try:
+    #         news = paginator.page(page)
+    #     except PageNotAnInteger:
+    #         # If page is not an integer, deliver first page.
+    #         news = paginator.page(1)
+    #     except EmptyPage:
+    #         # If page is out of range (e.g. 9999), deliver last page of results.
+    #         news = paginator.page(paginator.num_pages)
+    #
+    #     return news
 
     def deleteNews(self, request):
         """ deletes an existing news """
@@ -59,4 +100,3 @@ class News(models.Model):
 
     def __str__(self):
         return self.headline
-

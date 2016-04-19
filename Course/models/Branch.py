@@ -49,17 +49,10 @@ class BranchManager(models.Manager):
             B = B.filter(department=D)
 
         # idList = []
-<<<<<<< HEAD
         # for obj in B:
         #    idList.append(obj.courseId)
         return B
 
-=======
-        # for obj in objList:
-        #     idList.append(obj.courseId)
-        # return idList
-        return objList
->>>>>>> origin/master
 
 class Branch(models.Model):
     # Branch code

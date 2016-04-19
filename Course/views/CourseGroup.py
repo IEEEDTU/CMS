@@ -5,7 +5,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_POST, require_GET
 import json
 
-
+"""
 @csrf_exempt
 @require_GET
 def retrieveCourseGroups(request):
@@ -20,4 +20,4 @@ def retrieveCourseGroups(request):
 		response_data['branches'] = json.loads(data)
 	
 	return JsonResponse(response_data)
-
+"""

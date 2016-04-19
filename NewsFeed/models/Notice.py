@@ -27,8 +27,22 @@ class NoticeManager(models.Manager):
         N = Notice.objects.get(id=request['id'])
         return N
 
-    def retrieveNoticeById(self, request):
-        pass
+    def retrieveNotices(self, request):
+        """ retrieve all the notices """
+        """ optional fields: subject, issuingAuthority, degree, branch, department """
+        N = Notice.objects.all()
+        if 'subject' in request.keys():
+            N = N.filter(subject=request['subject'])
+        if 'issuingAuthority' in request.keys():
+            N = N.filter(issuingAuthority=request['issuingAuthority'])
+        if 'degree' in request.keys():
+            N = N.filter(degree=request['degree'])
+        if 'branch' in request.keys():
+            N = N.filter(branch=request['branch'])
+        if 'department' in request.keys():
+            N = N.filter(department=request['department'])
+
+        return N
 
     def deleteNotice(self, request):
         """ deletes an existing notice """
