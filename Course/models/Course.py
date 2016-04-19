@@ -80,16 +80,9 @@ class CourseManager(models.Manager):
             C = C.filter(courseType=request["courseType"])
 
         # idList = []
-<<<<<<< HEAD
         # for obj in C:
         #    idList.append(obj.courseId)
         return C
-=======
-        # for obj in objList:
-        #     idList.append(obj.courseId)
-        # return idList
-        return objList
->>>>>>> origin/master
 
 
 class Course(models.Model):
