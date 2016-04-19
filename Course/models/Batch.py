@@ -25,7 +25,11 @@ class BatchManager(models.Manager):
         B = Batch.objects.get(batchId=request['batchId'])
         return B
 
+<<<<<<< HEAD
     def retrieveBatches(self, request):
+=======
+    def retrieveBatchesByType(self, request):
+>>>>>>> origin/master
         """ get batches by type """
         """ note: type is optional field """
         B = Batch.objects.all()
