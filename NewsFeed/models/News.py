@@ -56,24 +56,24 @@ class NewsManager(models.Manager):
     def retrieveLatestNews(self, request):
         """ retrieves latest news """
         """ criteria is to just return top 10 news """
-        lastTen = News.objects.filter(date=request['since']).order_by('-date')[:10]
+        lastTen = News.objects.filter(date>=request['since']).order_by('-date')[:10]
         return lastTen
 
-    # def retrieveMoreNews(self, request):
-    #     N = News.objects.all()
-    #     paginator = Paginator(contact_list, request['rowsPerPage'])
-    #
-    #     page = request['page']
-    #     try:
-    #         news = paginator.page(page)
-    #     except PageNotAnInteger:
-    #         # If page is not an integer, deliver first page.
-    #         news = paginator.page(1)
-    #     except EmptyPage:
-    #         # If page is out of range (e.g. 9999), deliver last page of results.
-    #         news = paginator.page(paginator.num_pages)
-    #
-    #     return news
+    def retrieveMoreNews(self, request):
+        N = News.objects.all()
+        paginator = Paginator(N, request['rowsPerPage'])
+    
+        page = request['page']
+        try:
+            news = paginator.page(page)
+        except PageNotAnInteger:
+            # If page is not an integer, deliver first page.
+            news = paginator.page(1)
+        except EmptyPage:
+            # If page is out of range (e.g. 9999), deliver last page of results.
+            news = paginator.page(paginator.num_pages)
+    
+        return news
 
     def deleteNews(self, request):
         """ deletes an existing news """
