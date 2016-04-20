@@ -1,7 +1,6 @@
 ﻿from django.db import models
 from .Department import *
 
-
 class Laboratory(models.Model):
     # Laboratory code
     labCode = models.CharField(max_length=10, primary_key=True, blank=False, null=False)

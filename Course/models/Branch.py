@@ -2,7 +2,6 @@
 from .Department import *
 from .AcademicDegree import *
 
-
 class BranchManager(models.Manager):
     def addBranch(self, request):
         """ add new branch """

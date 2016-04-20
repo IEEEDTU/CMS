@@ -2,7 +2,6 @@
 from .Department import *
 from .AcademicDegree import *
 
-
 class BatchManager(models.Manager):
     def addBatch(self, request):
         """ add new batch """
@@ -36,7 +35,6 @@ class BatchManager(models.Manager):
         # for b in B:
         #    idList.append(b.batchId + "-" + b.batchType)
         return B
-
 
 class Batch(models.Model):
     # Batch ID
