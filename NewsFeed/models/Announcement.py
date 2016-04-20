@@ -42,6 +42,28 @@ class AnnouncementManager(models.Manager):
         A = A.delete()
         return A
 
+    def retrieveLatestAnnouncement(self, request):
+        """ retrieves latest Announcement """
+        """ criteria is to just return top 10 Announcement """
+        lastTen = Announcement.objects.filter(date>=request['since']).order_by('-date')[:10]
+        return lastTen
+
+    def retrieveMoreAnnouncement(self, request):
+        A = Announcement.objects.all()
+        paginator = Paginator(A, request['rowsPerPage'])
+    
+        page = request['page']
+        try:
+            announcement = paginator.page(page)
+        except PageNotAnInteger:
+            # If page is not an integer, deliver first page.
+            announcement = paginator.page(1)
+        except EmptyPage:
+            # If page is out of range (e.g. 9999), deliver last page of results.
+            announcement = paginator.page(paginator.num_pages)
+    
+        return announcement
+
 
 class Announcement(models.Model):
     # Title of announcement
