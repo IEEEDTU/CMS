@@ -50,7 +50,7 @@ def retrieveLatestAnnouncement(request):
 		response_data['success'] = '0'
 	else :
 		response_data['success'] = '1'
-		response_data['announcement'] = E
+		response_data['announcement'] = A
 	return JsonResponse(response_data)
 
 @csrf_exempt
