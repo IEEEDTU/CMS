@@ -25,4 +25,4 @@ class CourseGroup(models.Model):
     objects = CourseGroupManager()
 
     def __str__(self):
-        return self.course + " - " + self.group
+        return str(self.course) + " - " + str(self.group)

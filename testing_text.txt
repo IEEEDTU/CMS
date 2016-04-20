@@ -158,12 +158,15 @@ project0 = {
     'teamSize' : 3
 }
 
-
+from NewsFeed.models import *
 ann0 = {
     'title': "Bla Bla Announcement",
     'content': "This is a Bla Bla event",
-    'id': 1
+    'courseId': "SE202",
+    'groupId':"A1"
 }
+Announcement.objects.addAnnouncement(ann0)
+Announcement.objects.retrieveAnnouncements(ann0)
 
 nt0 = {
     'subject':"Examination postponed",
@@ -248,4 +251,14 @@ event1 = {
     'fbEvent': 'www.facebook.com',
     'website': 'www.ieee.dcetech.com',
     'image': 'drive.google.co.in/image1'
+}
+
+news0 = {
+    'id':2,
+    'headline':"DTU launched deferred placement policy",
+    'description':"Deferred placement policy launched for the students having interest in entrepreneurship",
+    'image':"www.imac.com",
+    'link':"dtu.ac.in",
+    'facultyId':"CSE/030",
+    'date':"2016-04-20"
 }

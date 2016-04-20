@@ -21,7 +21,7 @@ class NewsManager(models.Manager):
         if "image" in request.keys():
             N.image = request['image']
         if "link" in request.keys():
-            link = request['link']
+            N.link = request['link']
 
         N.save()
         return N
@@ -85,7 +85,7 @@ class NewsManager(models.Manager):
 class News(models.Model):
     # Headline
     headline = models.CharField(max_length=250, null=False, blank=False)
-    # Desciption
+    # Description
     description = models.CharField(max_length=4000, null=False, blank=False)
     # Image
     image = models.URLField(null=True, blank=True)

@@ -6,7 +6,7 @@ import datetime
 class AnnouncementManager(models.Manager):
     def addAnnouncement(self, request):
         """ adds new announcement """
-        CG = CourseGroup.objects.get(id=request['id'])
+        CG = CourseGroup.objects.getCourseGroup(request)
         A = Announcement(
             title=request['title'],
             content=request['content'],
@@ -34,6 +34,7 @@ class AnnouncementManager(models.Manager):
         """ retrieve all announcements of a particular course group """
         CG = CourseGroup.objects.getCourseGroup(request)
         A = Announcement.objects.filter(courseGroup=CG)
+        return A
 
     def deleteAnnouncement(self, request):
         """ deletes an existing announcement """
@@ -56,3 +57,4 @@ class Announcement(models.Model):
 
     def __str__(self):
         return self.title
+
