@@ -40,3 +40,30 @@ def deleteAnnouncement(request):
 		response_data['announcement'] = A
 	return JsonResponse(response_data)
 
+@csrf_exempt
+@require_POST
+def retrieveLatestAnnouncement(request):
+	response_data = {}
+	try:
+		A = Announcement.objects.retrieveLatestAnnouncement(request.POST)
+	except Exception as e:
+		response_data['success'] = '0'
+	else :
+		response_data['success'] = '1'
+		response_data['announcement'] = E
+	return JsonResponse(response_data)
+
+@csrf_exempt
+@require_POST
+def retrieveMoreAnnouncement(request):
+	response_data = {}
+	try:
+		A = Announcement.objects.retrieveMoreAnnouncement(request.POST)
+	except Exception as e:
+		response_data['success'] = '0'
+	else :
+		response_data['success'] = '1'
+		response_data['announcement'] = A
+	return JsonResponse(response_data)
+
+

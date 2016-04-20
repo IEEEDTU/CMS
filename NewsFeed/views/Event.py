@@ -7,66 +7,66 @@ import json
 
 @csrf_exempt
 @require_POST
-def addNews(request):
+def addEvent(request):
 	response_data = {}
 	try:
-		N = News.objects.addNews(request.POST)
+		E = Event.objects.addEvent(request.POST)
 	except Exception as e:
 		response_data['success'] = '0'
 	else :
 		response_data['success'] = '1'
-		response_data['news'] = N
+		response_data['event'] = N
 	return JsonResponse(response_data)
 
 @csrf_exempt
 @require_POST
-def editNews(request):
+def editEvent(request):
 	response_data = {}
 	try:
-		N = News.objects.editNews(request.POST)
+		E = Event.objects.editEvent(request.POST)
 	except Exception as e:
 		response_data['success'] = '0'
 	else :
 		response_data['success'] = '1'
-		response_data['news'] = N
+		response_data['event'] = E
 	return JsonResponse(response_data)
 
 @csrf_exempt
 @require_POST
-def deleteNews(request):
+def deleteEvent(request):
 	response_data = {}
 	try:
-		N = News.objects.deleteNews(request.POST)
+		E = Event.objects.deleteEvent(request.POST)
 	except Exception as e:
 		response_data['success'] = '0'
 	else :
 		response_data['success'] = '1'
-		response_data['news'] = N
+		response_data['event'] = E
 	return JsonResponse(response_data)
 
 
 @csrf_exempt
 @require_POST
-def retrieveLatestNews(request):
+def retrieveLatestEvent(request):
 	response_data = {}
 	try:
-		N = News.objects.retrieveLatestNews(request.POST)
+		E = Event.objects.retrieveLatestEvent(request.POST)
 	except Exception as e:
 		response_data['success'] = '0'
 	else :
 		response_data['success'] = '1'
-		response_data['news'] = N
+		response_data['event'] = E
 	return JsonResponse(response_data)
 
 @csrf_exempt
 @require_POST
-def retrieveMoreNews(request):
+def retrieveMoreEvent(request):
 	response_data = {}
 	try:
-		N = News.objects.retrieveMoreNews(request.POST)
+		E = Event.objects.retrieveMoreEvent(request.POST)
 	except Exception as e:
 		response_data['success'] = '0'
 	else :
 		response_data['success'] = '1'
-		response_data['news'] = N
-	return JsonResponse(response_data)fann
+		response_data['event'] = E
+	return JsonResponse(response_data)

@@ -7,66 +7,66 @@ import json
 
 @csrf_exempt
 @require_POST
-def addNews(request):
+def addNotice(request):
 	response_data = {}
 	try:
-		N = News.objects.addNews(request.POST)
+		N = Notice.objects.addNotice(request.POST)
 	except Exception as e:
 		response_data['success'] = '0'
 	else :
 		response_data['success'] = '1'
-		response_data['news'] = N
+		response_data['notice'] = N
 	return JsonResponse(response_data)
 
 @csrf_exempt
 @require_POST
-def editNews(request):
+def editNotice(request):
 	response_data = {}
 	try:
-		N = News.objects.editNews(request.POST)
+		N = Notice.objects.editNotice(request.POST)
 	except Exception as e:
 		response_data['success'] = '0'
 	else :
 		response_data['success'] = '1'
-		response_data['news'] = N
+		response_data['notice'] = N
 	return JsonResponse(response_data)
 
 @csrf_exempt
 @require_POST
-def deleteNews(request):
+def deleteNotice(request):
 	response_data = {}
 	try:
-		N = News.objects.deleteNews(request.POST)
+		N = Notice.objects.deleteNotice(request.POST)
 	except Exception as e:
 		response_data['success'] = '0'
 	else :
 		response_data['success'] = '1'
-		response_data['news'] = N
+		response_data['notice'] = N
 	return JsonResponse(response_data)
 
 
 @csrf_exempt
 @require_POST
-def retrieveLatestNews(request):
+def retrieveLatestNotice(request):
 	response_data = {}
 	try:
-		N = News.objects.retrieveLatestNews(request.POST)
+		N = Notice.objects.retrieveLatestNotice(request.POST)
 	except Exception as e:
 		response_data['success'] = '0'
 	else :
 		response_data['success'] = '1'
-		response_data['news'] = N
+		response_data['notice'] = N
 	return JsonResponse(response_data)
 
 @csrf_exempt
 @require_POST
-def retrieveMoreNews(request):
+def retrieveMoreNotice(request):
 	response_data = {}
 	try:
-		N = News.objects.retrieveMoreNews(request.POST)
+		N = Notice.objects.retrieveMoreNotice(request.POST)
 	except Exception as e:
 		response_data['success'] = '0'
 	else :
 		response_data['success'] = '1'
-		response_data['news'] = N
-	return JsonResponse(response_data)fann
+		response_data['notice'] = N
+	return JsonResponse(response_data)
