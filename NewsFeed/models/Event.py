@@ -84,6 +84,28 @@ class EventManager(models.Manager):
         E = E.delete()
         return E
 
+    def retrieveLatestEvent(self, request):
+        """ retrieves latest Event """
+        """ criteria is to just return top 10 news """
+        lastTen = Event.objects.filter(date>=request['since']).order_by('-date')[:10]
+        return lastTen
+
+    def retrieveMoreEvent(self, request):
+        E = Event.objects.all()
+        paginator = Paginator(E, request['rowsPerPage'])
+    
+        page = request['page']
+        try:
+            event = paginator.page(page)
+        except PageNotAnInteger:
+            # If page is not an integer, deliver first page.
+            event = paginator.page(1)
+        except EmptyPage:
+            # If page is out of range (e.g. 9999), deliver last page of results.
+            event = paginator.page(paginator.num_pages)
+    
+        return event
+
 
 class Event(models.Model):
     # Name of the particular event
