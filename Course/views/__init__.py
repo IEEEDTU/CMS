@@ -6,5 +6,5 @@ from .Batch import *
 from .Group import *
 
 from .Course import * 
-#from .CourseGroup import *
+from .CourseGroup import *
 #from .CourseSchedule import *
