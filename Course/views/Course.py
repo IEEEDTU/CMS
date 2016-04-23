@@ -16,7 +16,8 @@ def addCourse(request):
 		response_data['success'] = '0'
 	else :
 		response_data['success'] = '1'
-		response_data['course'] = C
+		data = serializers.serialize('json', [C, ])
+		response_data["course"] = json.loads(data)
 	# data = serializers.serialize('json', [ C, ])
 	# print(data)
 	# return HttpResponse(data, content_type='application/json')

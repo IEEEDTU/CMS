@@ -15,7 +15,8 @@ def addNews(request):
 		response_data['success'] = '0'
 	else :
 		response_data['success'] = '1'
-		response_data['news'] = N
+		data = serializers.serialize('json', [ N, ])
+		response_data["news"] = json.loads(data)
 	return JsonResponse(response_data)
 
 @csrf_exempt
@@ -69,4 +70,4 @@ def retrieveMoreNews(request):
 	else :
 		response_data['success'] = '1'
 		response_data['news'] = N
-	return JsonResponse(response_data)fann
+	return JsonResponse(response_data)

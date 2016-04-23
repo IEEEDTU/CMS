@@ -18,7 +18,10 @@ from django.conf.urls import url,include
 from django.contrib import admin
 
 from Course import urls as course_urls
+from NewsFeed import urls as newsfeed_urls
+
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^course/',include(course_urls)),
+    url(r'^newsfeed/',include(newsfeed_urls)),
 ]
