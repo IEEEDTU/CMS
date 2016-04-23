@@ -1,6 +1,8 @@
 from django.db import models
 from Course.models import CourseGroup
+from django.core.paginator import Paginator
 import datetime
+
 
 
 class AnnouncementManager(models.Manager):
@@ -45,7 +47,7 @@ class AnnouncementManager(models.Manager):
     def retrieveLatestAnnouncement(self, request):
         """ retrieves latest Announcement """
         """ criteria is to just return top 10 Announcement """
-        lastTen = Announcement.objects.filter(date>=request['since']).order_by('-date')[:10]
+        lastTen = Announcement.objects.filter(date__gte=request['since']).order_by('-date')[:10]
         return lastTen
 
     def retrieveMoreAnnouncement(self, request):

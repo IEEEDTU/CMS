@@ -1,6 +1,6 @@
 from django.db import models
 from Profiler.models import *
-
+from django.core.paginator import Paginator
 
 class NewsManager(models.Manager):
     def addNews(self, request):
@@ -56,14 +56,14 @@ class NewsManager(models.Manager):
     def retrieveLatestNews(self, request):
         """ retrieves latest news """
         """ criteria is to just return top 10 news """
-        lastTen = News.objects.filter(date>=request['since']).order_by('-date')[:10]
+        lastTen = News.objects.filter(date__gte = request['since']).order_by('-date')[:10]
         return lastTen
 
     def retrieveMoreNews(self, request):
         N = News.objects.all()
         paginator = Paginator(N, request['rowsPerPage'])
     
-        page = request['page']
+        page = request['pageNo']
         try:
             news = paginator.page(page)
         except PageNotAnInteger:

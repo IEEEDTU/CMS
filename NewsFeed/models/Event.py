@@ -1,6 +1,7 @@
 from django.db import models
 from Course.models import *
 from Profiler.models import Mobile
+from django.core.paginator import Paginator
 from datetime import datetime
 
 class EventManager(models.Manager):
@@ -87,7 +88,7 @@ class EventManager(models.Manager):
     def retrieveLatestEvent(self, request):
         """ retrieves latest Event """
         """ criteria is to just return top 10 news """
-        lastTen = Event.objects.filter(date>=request['since']).order_by('-date')[:10]
+        lastTen = Event.objects.filter(date__gte=request['since']).order_by('-date')[:10]
         return lastTen
 
     def retrieveMoreEvent(self, request):

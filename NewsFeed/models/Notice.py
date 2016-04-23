@@ -1,6 +1,6 @@
 from django.db import models
 from Course.models import Degree, Branch, Department
-
+from django.core.paginator import Paginator
 
 class NoticeManager(models.Manager):
     def addNotice(self, request):
@@ -53,7 +53,7 @@ class NoticeManager(models.Manager):
     def retrieveLatestNotice(self, request):
         """ retrieves latest Notice """
         """ criteria is to just return top 10 news """
-        lastTen = Notice.objects.filter(date>=request['since']).order_by('-date')[:10]
+        lastTen = Notice.objects.filter(date__gte=request['since']).order_by('-date')[:10]
         return lastTen
 
     def retrieveMoreNotice(self, request):
