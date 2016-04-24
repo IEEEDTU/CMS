@@ -1,6 +1,6 @@
 from django.db import models
 from Course.models import CourseGroup
-from django.core.paginator import Paginator
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 import datetime
 
 

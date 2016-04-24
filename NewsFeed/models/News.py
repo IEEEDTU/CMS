@@ -1,6 +1,6 @@
 from django.db import models
 from Profiler.models import *
-from django.core.paginator import Paginator
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 class NewsManager(models.Manager):
     def addNews(self, request):

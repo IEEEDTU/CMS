@@ -1,6 +1,6 @@
 from django.db import models
 from Course.models import Degree, Branch, Department
-from django.core.paginator import Paginator
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 class NoticeManager(models.Manager):
     def addNotice(self, request):

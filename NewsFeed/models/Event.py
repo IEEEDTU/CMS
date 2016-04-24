@@ -1,7 +1,7 @@
 from django.db import models
 from Course.models import *
 from Profiler.models import Mobile
-from django.core.paginator import Paginator
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from datetime import datetime
 
 class EventManager(models.Manager):
