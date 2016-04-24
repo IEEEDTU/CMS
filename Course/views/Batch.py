@@ -17,13 +17,13 @@ def retrieveBatches(request):
 	else :
 		response_data['success'] = '1'
 		data = serializers.serialize('json', B)
-		response_data['branches'] = json.loads(data)
+		response_data['batches'] = json.loads(data)
 	
 	return JsonResponse(response_data)
 
 @csrf_exempt
 @require_GET
-def getBatchByCode(request):
+def getBatchById(request):
 	response_data = {}
 	try:
 		B = Batch.objects.getBatchByCode(request.GET)
@@ -32,6 +32,6 @@ def getBatchByCode(request):
 	else:
 		response_data["success"] = 1
 		data = serializers.serialize('json', [B, ])
-		response_data["course"] = json.loads(data)
+		response_data["batches"] = json.loads(data)
 
 	return JsonResponse(response_data)

@@ -5,10 +5,12 @@ from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_POST, require_GET
 import json
 
-# input : courseId, courseName, courseType, credits, sessMaxMarks, endMaxSemMarks, maxMarks, minPassingMarks, semester, degreeCode, degreeType, branchCode
 @csrf_exempt
 @require_POST
 def addCourse(request):
+	"""" 
+	request : +courseId, +courseName, +courseType, +credits, +sessMaxMarks, +endMaxSemMarks, +maxMarks, +minPassingMarks, +semester, +degreeCode, +degreeType, +branchCode
+	"""
 	response_data = {}
 	try:
 		C = Course.objects.addCourse(request.POST)
@@ -23,9 +25,13 @@ def addCourse(request):
 	# return HttpResponse(data, content_type='application/json')
 	return JsonResponse(response_data)
 
+
 @csrf_exempt
 @require_GET
 def retrieveCourses(request):
+	"""
+	request : +degreeCode, +degreeType, +branchCode
+	"""
 	response_data = {}
 	list = []
 	try:	
@@ -47,6 +53,9 @@ def retrieveCourses(request):
 @csrf_exempt
 @require_GET
 def getCourseById(request):
+	"""
+	request : +courseId
+	"""
 	response_data = {}
 	try:
 		C = Course.objects.getCourseById(request.GET)
