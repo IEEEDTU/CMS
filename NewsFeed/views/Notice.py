@@ -13,6 +13,7 @@ def addNotice(request):
 		N = Notice.objects.addNotice(request.POST)
 	except Exception as e:
 		response_data['success'] = '0'
+		response_data['exception'] = str(e)
 	else :
 		response_data['success'] = '1'
 		data = serializers.serialize('json', [ N, ])
@@ -27,6 +28,7 @@ def editNotice(request):
 		N = Notice.objects.editNotice(request.POST)
 	except Exception as e:
 		response_data['success'] = '0'
+		response_data['exception'] = str(e)
 	else :
 		response_data['success'] = '1'
 		data = serializers.serialize('json', [ N, ])
@@ -41,6 +43,7 @@ def deleteNotice(request):
 		N = Notice.objects.deleteNotice(request.POST)
 	except Exception as e:
 		response_data['success'] = '0'
+		response_data['exception'] = str(e)
 	else :
 		response_data['success'] = '1'
 		data = serializers.serialize('json', [ N, ])
@@ -56,6 +59,7 @@ def retrieveLatestNotice(request):
 		N = Notice.objects.retrieveLatestNotice(request.GET)
 	except Exception as e:
 		response_data['success'] = '0'
+		response_data['exception'] = str(e)
 	else :
 		response_data['success'] = '1'
 		global data
@@ -74,6 +78,7 @@ def retrieveMoreNotice(request):
 		N = Notice.objects.retrieveMoreNotice(request.GET)
 	except Exception as e:
 		response_data['success'] = '0'
+		response_data['exception'] = str(e)
 	else :
 		response_data['success'] = '1'
 		global data

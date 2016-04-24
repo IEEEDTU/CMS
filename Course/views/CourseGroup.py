@@ -14,9 +14,14 @@ def retrieveCourseGroups(request):
 		C = CourseGroup.objects.retrieveCourseGroups(request.GET)
 	except Exception as e:
 		response_data['success'] = '0'
+		response_data['exception'] = str(e)
 	else :
 		response_data['success'] = '1'
-		data = serializers.serialize('json', C)
-		response_data['branches'] = json.loads(data)
+		global data
+		try:
+			data = serializers.serialize('json', C)
+		except Exception as e:
+			data = serializers.serialize('json', [ C, ])
+		response_data["coursegroups"] = json.loads(data)
 	
 	return JsonResponse(response_data)

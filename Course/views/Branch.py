@@ -14,10 +14,14 @@ def retrieveBranches(request):
 		B = Branch.objects.retrieveBranches(request.GET)
 	except Exception as e:
 		response_data['success'] = '0'
+		response_data['exception'] = str(e)
 	else :
 		response_data['success'] = '1'
-		data = serializers.serialize('json', B)
-		response_data['branches'] = json.loads(data)
+		try:
+			data = serializers.serialize('json', B)
+		except Exception as e:
+			data = serializers.serialize('json', [ B, ])
+		response_data["branches"] = json.loads(data)
 	
 	return JsonResponse(response_data)
 
@@ -29,6 +33,7 @@ def getBranchByCode(request):
 		B = Branch.objects.getBranchByCode(request.GET)
 	except Exception as e:
 		response_data["success"] = 0
+		response_data['exception'] = str(e)
 	else:
 		response_data["success"] = 1
 		data = serializers.serialize('json', [B, ])

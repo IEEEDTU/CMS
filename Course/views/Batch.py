@@ -14,10 +14,14 @@ def retrieveBatches(request):
 		B = Batch.objects.retrieveBatches(request.GET)
 	except Exception as e:
 		response_data['success'] = '0'
+		response_data['exception'] = str(e)
 	else :
 		response_data['success'] = '1'
-		data = serializers.serialize('json', B)
-		response_data['batches'] = json.loads(data)
+		try:
+			data = serializers.serialize('json', B)
+		except Exception as e:
+			data = serializers.serialize('json', [ B, ])
+		response_data["batches"] = json.loads(data)
 	
 	return JsonResponse(response_data)
 
@@ -29,6 +33,7 @@ def getBatchById(request):
 		B = Batch.objects.getBatchById(request.GET)
 	except Exception as e:
 		response_data["success"] = 0
+		response_data['exception'] = str(e)
 	else:
 		response_data["success"] = 1
 		data = serializers.serialize('json', [B, ])

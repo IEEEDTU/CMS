@@ -13,6 +13,7 @@ def addAnnouncement(request):
 		A = Announcement.objects.addAnnouncement(request.POST)
 	except Exception as e:
 		response_data['success'] = '0'
+		response_data['exception'] = str(e)
 	else :
 		response_data['success'] = '1'
 		data = serializers.serialize('json', [ A, ])
@@ -25,6 +26,7 @@ def editAnnouncement(request):
 		A = Announcement.objects.editAnnouncement(request.POST)
 	except Exception as e:
 		response_data['success'] = '0'
+		response_data['exception'] = str(e)
 	else :
 		response_data['success'] = '1'
 		data = serializers.serialize('json', [ A, ])
@@ -37,6 +39,7 @@ def deleteAnnouncement(request):
 		A = Announcement.objects.deleteAnnouncement(request.POST)
 	except Exception as e:
 		response_data['success'] = '0'
+		response_data['exception'] = str(e)
 	else :
 		response_data['success'] = '1'
 		data = serializers.serialize('json', [ A, ])
@@ -51,6 +54,7 @@ def retrieveLatestAnnouncement(request):
 		A = Announcement.objects.retrieveLatestAnnouncement(request.GET)
 	except Exception as e:
 		response_data['success'] = '0'
+		response_data['exception'] = str(e)
 	else :
 		response_data['success'] = '1'
 		global data
@@ -69,6 +73,7 @@ def retrieveMoreAnnouncement(request):
 		A = Announcement.objects.retrieveMoreAnnouncement(request.GET)
 	except Exception as e:
 		response_data['success'] = '0'
+		response_data['exception'] = str(e)
 	else :
 		response_data['success'] = '1'
 		global data

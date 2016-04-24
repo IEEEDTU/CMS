@@ -16,6 +16,7 @@ def addCourse(request):
 		C = Course.objects.addCourse(request.POST)
 	except Exception as e:
 		response_data['success'] = '0'
+		response_data['exception'] = str(e)
 	else :
 		response_data['success'] = '1'
 		data = serializers.serialize('json', [C, ])
@@ -39,13 +40,18 @@ def retrieveCourses(request):
 		print(C)
 	except Exception as e:
 		response_data['success'] = '0'
+		response_data['exception'] = str(e)
 	else :
 		response_data['success'] = '1'
 		#for obj in C:
 			#dic = {'courseId' : obj.courseId, 'courseName' :obj.courseName}
 			#list.append(dic)
 		#response_data['courses'] = list
-		data = serializers.serialize('json', C)
+		global data
+		try:
+			data = serializers.serialize('json', C)
+		except Exception as e:
+			data = serializers.serialize('json', [ C, ])
 		response_data["courses"] = json.loads(data)
 		
 	return JsonResponse(response_data)
@@ -61,6 +67,7 @@ def getCourseById(request):
 		C = Course.objects.getCourseById(request.GET)
 	except Exception as e:
 		response_data["success"] = 0
+		response_data['exception'] = str(e)
 	else:
 		response_data["success"] = 1
 		data = serializers.serialize('json', [C, ])

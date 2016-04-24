@@ -13,10 +13,14 @@ def retrieveDegrees(request):
 		D = Degree.objects.retrieveDegrees(request.GET)
 	except Exception as e:
 		response_data['success'] = '0'
+		response_data['exception'] = str(e)
 	else :
 		response_data['success'] = '1'
-		data = serializers.serialize('json', D)
-		response_data['degrees'] = json.loads(data)
+		try:
+			data = serializers.serialize('json', D)
+		except Exception as e:
+			data = serializers.serialize('json', [ D, ])
+		response_data["degrees"] = json.loads(data)
 	
 	return JsonResponse(response_data)
 
@@ -29,6 +33,7 @@ def getDegreeByCodeAndType(request):
 		D = Degree.objects.getCourseById(request.GET)
 	except Exception as e:
 		response_data['success'] = '0'
+		response_data['exception'] = str(e)
 	else :
 		response_data['success'] = '1'
 		data = serializers.serialize('json', [ D, ])

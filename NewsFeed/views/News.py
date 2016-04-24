@@ -13,6 +13,7 @@ def addNews(request):
 		N = News.objects.addNews(request.POST)
 	except Exception as e:
 		response_data['success'] = '0'
+		response_data['exception'] = str(e)
 	else :
 		response_data['success'] = '1'
 		data = serializers.serialize('json', [ N, ])
@@ -27,6 +28,7 @@ def editNews(request):
 		N = News.objects.editNews(request.POST)
 	except Exception as e:
 		response_data['success'] = '0'
+		response_data['exception'] = str(e)
 	else :
 		response_data['success'] = '1'
 		data = serializers.serialize('json', [ N, ])
@@ -41,6 +43,7 @@ def deleteNews(request):
 		N = News.objects.deleteNews(request.POST)
 	except Exception as e:
 		response_data['success'] = '0'
+		response_data['exception'] = str(e)
 	else :
 		response_data['success'] = '1'
 		data = serializers.serialize('json', [ N, ])
@@ -56,6 +59,7 @@ def retrieveLatestNews(request):
 		N = News.objects.retrieveLatestNews(request.GET)
 	except Exception as e:
 		response_data['success'] = '0'
+		response_data['exception'] = str(e)
 	else :
 		response_data['success'] = '1'
 		global data

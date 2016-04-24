@@ -13,6 +13,7 @@ def addEvent(request):
 		E = Event.objects.addEvent(request.POST)
 	except Exception as e:
 		response_data['success'] = '0'
+		response_data['exception'] = str(e)
 	else :
 		response_data['success'] = '1'
 		data = serializers.serialize('json', [ E, ])
@@ -27,6 +28,7 @@ def editEvent(request):
 		E = Event.objects.editEvent(request.POST)
 	except Exception as e:
 		response_data['success'] = '0'
+		response_data['exception'] = str(e)
 	else :
 		response_data['success'] = '1'
 		data = serializers.serialize('json', [ E, ])
@@ -41,6 +43,7 @@ def deleteEvent(request):
 		E = Event.objects.deleteEvent(request.POST)
 	except Exception as e:
 		response_data['success'] = '0'
+		response_data['exception'] = str(e)
 	else :
 		response_data['success'] = '1'
 		data = serializers.serialize('json', [ E, ])
@@ -56,6 +59,7 @@ def retrieveLatestEvent(request):
 		E = Event.objects.retrieveLatestEvent(request.GET)
 	except Exception as e:
 		response_data['success'] = '0'
+		response_data['exception'] = str(e)
 	else :
 		response_data['success'] = '1'
 		global data
@@ -74,6 +78,7 @@ def retrieveMoreEvent(request):
 		E = Event.objects.retrieveMoreEvent(request.GET)
 	except Exception as e:
 		response_data['success'] = '0'
+		response_data['exception'] = str(e)
 	else :
 		response_data['success'] = '1'
 		global data
