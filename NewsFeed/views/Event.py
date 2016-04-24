@@ -15,7 +15,8 @@ def addEvent(request):
 		response_data['success'] = '0'
 	else :
 		response_data['success'] = '1'
-		response_data['event'] = N
+		data = serializers.serialize('json', [ E, ])
+		response_data["event"] = json.loads(data)
 	return JsonResponse(response_data)
 
 @csrf_exempt
@@ -28,7 +29,8 @@ def editEvent(request):
 		response_data['success'] = '0'
 	else :
 		response_data['success'] = '1'
-		response_data['event'] = E
+		data = serializers.serialize('json', [ E, ])
+		response_data["event"] = json.loads(data)
 	return JsonResponse(response_data)
 
 @csrf_exempt
@@ -41,32 +43,43 @@ def deleteEvent(request):
 		response_data['success'] = '0'
 	else :
 		response_data['success'] = '1'
-		response_data['event'] = E
+		data = serializers.serialize('json', [ E, ])
+		response_data["event"] = json.loads(data)
 	return JsonResponse(response_data)
 
 
 @csrf_exempt
-@require_POST
+@require_GET
 def retrieveLatestEvent(request):
 	response_data = {}
 	try:
-		E = Event.objects.retrieveLatestEvent(request.POST)
+		E = Event.objects.retrieveLatestEvent(request.GET)
 	except Exception as e:
 		response_data['success'] = '0'
 	else :
 		response_data['success'] = '1'
-		response_data['event'] = E
+		global data
+		try:
+			data = serializers.serialize('json', E)
+		except Exception as e:
+			data = serializers.serialize('json', [ E, ])
+		response_data["event"] = json.loads(data)
 	return JsonResponse(response_data)
 
 @csrf_exempt
-@require_POST
+@require_GET
 def retrieveMoreEvent(request):
 	response_data = {}
 	try:
-		E = Event.objects.retrieveMoreEvent(request.POST)
+		E = Event.objects.retrieveMoreEvent(request.GET)
 	except Exception as e:
 		response_data['success'] = '0'
 	else :
 		response_data['success'] = '1'
-		response_data['event'] = E
+		global data
+		try:
+			data = serializers.serialize('json', E)
+		except Exception as e:
+			data = serializers.serialize('json', [ E, ])
+		response_data["event"] = json.loads(data)
 	return JsonResponse(response_data)

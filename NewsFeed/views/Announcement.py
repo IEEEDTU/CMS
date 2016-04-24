@@ -15,7 +15,8 @@ def addAnnouncement(request):
 		response_data['success'] = '0'
 	else :
 		response_data['success'] = '1'
-		response_data['announcement'] = A
+		data = serializers.serialize('json', [ A, ])
+		response_data["announcement"] = json.loads(data)
 	return JsonResponse(response_data)
 
 def editAnnouncement(request):
@@ -26,7 +27,8 @@ def editAnnouncement(request):
 		response_data['success'] = '0'
 	else :
 		response_data['success'] = '1'
-		response_data['announcement'] = A
+		data = serializers.serialize('json', [ A, ])
+		response_data["announcement"] = json.loads(data)
 	return JsonResponse(response_data)
 
 def deleteAnnouncement(request):
@@ -37,33 +39,44 @@ def deleteAnnouncement(request):
 		response_data['success'] = '0'
 	else :
 		response_data['success'] = '1'
-		response_data['announcement'] = A
+		data = serializers.serialize('json', [ A, ])
+		response_data["announcement"] = json.loads(data)
 	return JsonResponse(response_data)
 
 @csrf_exempt
-@require_POST
+@require_GET
 def retrieveLatestAnnouncement(request):
 	response_data = {}
 	try:
-		A = Announcement.objects.retrieveLatestAnnouncement(request.POST)
+		A = Announcement.objects.retrieveLatestAnnouncement(request.GET)
 	except Exception as e:
 		response_data['success'] = '0'
 	else :
 		response_data['success'] = '1'
-		response_data['announcement'] = A
+		global data
+		try:
+			data = serializers.serialize('json', A)
+		except Exception as e:
+			data = serializers.serialize('json', [ A, ])
+		response_data["announcement"] = json.loads(data)
 	return JsonResponse(response_data)
 
 @csrf_exempt
-@require_POST
+@require_GET
 def retrieveMoreAnnouncement(request):
 	response_data = {}
 	try:
-		A = Announcement.objects.retrieveMoreAnnouncement(request.POST)
+		A = Announcement.objects.retrieveMoreAnnouncement(request.GET)
 	except Exception as e:
 		response_data['success'] = '0'
 	else :
 		response_data['success'] = '1'
-		response_data['announcement'] = A
+		global data
+		try:
+			data = serializers.serialize('json', A)
+		except Exception as e:
+			data = serializers.serialize('json', [ A, ])
+		response_data["announcement"] = json.loads(data)
 	return JsonResponse(response_data)
 
 

@@ -15,7 +15,8 @@ def addNotice(request):
 		response_data['success'] = '0'
 	else :
 		response_data['success'] = '1'
-		response_data['notice'] = N
+		data = serializers.serialize('json', [ N, ])
+		response_data["notice"] = json.loads(data)
 	return JsonResponse(response_data)
 
 @csrf_exempt
@@ -28,7 +29,8 @@ def editNotice(request):
 		response_data['success'] = '0'
 	else :
 		response_data['success'] = '1'
-		response_data['notice'] = N
+		data = serializers.serialize('json', [ N, ])
+		response_data["notice"] = json.loads(data)
 	return JsonResponse(response_data)
 
 @csrf_exempt
@@ -41,32 +43,43 @@ def deleteNotice(request):
 		response_data['success'] = '0'
 	else :
 		response_data['success'] = '1'
-		response_data['notice'] = N
+		data = serializers.serialize('json', [ N, ])
+		response_data["notice"] = json.loads(data)
 	return JsonResponse(response_data)
 
 
 @csrf_exempt
-@require_POST
+@require_GET
 def retrieveLatestNotice(request):
 	response_data = {}
 	try:
-		N = Notice.objects.retrieveLatestNotice(request.POST)
+		N = Notice.objects.retrieveLatestNotice(request.GET)
 	except Exception as e:
 		response_data['success'] = '0'
 	else :
 		response_data['success'] = '1'
-		response_data['notice'] = N
+		global data
+		try:
+			data = serializers.serialize('json', N)
+		except Exception as e:
+			data = serializers.serialize('json', [ N, ])
+		response_data["notice"] = json.loads(data)
 	return JsonResponse(response_data)
 
 @csrf_exempt
-@require_POST
+@require_GET
 def retrieveMoreNotice(request):
 	response_data = {}
 	try:
-		N = Notice.objects.retrieveMoreNotice(request.POST)
+		N = Notice.objects.retrieveMoreNotice(request.GET)
 	except Exception as e:
 		response_data['success'] = '0'
 	else :
 		response_data['success'] = '1'
-		response_data['notice'] = N
+		global data
+		try:
+			data = serializers.serialize('json', N)
+		except Exception as e:
+			data = serializers.serialize('json', [ N, ])
+		response_data["notice"] = json.loads(data)
 	return JsonResponse(response_data)
