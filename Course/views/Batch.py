@@ -26,7 +26,7 @@ def retrieveBatches(request):
 def getBatchById(request):
 	response_data = {}
 	try:
-		B = Batch.objects.getBatchByCode(request.GET)
+		B = Batch.objects.getBatchById(request.GET)
 	except Exception as e:
 		response_data["success"] = 0
 	else:

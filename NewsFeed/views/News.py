@@ -74,6 +74,7 @@ def retrieveMoreNews(request):
 		N = News.objects.retrieveMoreNews(request.GET)
 	except Exception as e:
 		response_data['success'] = '0'
+		response_data['exception'] = e
 	else :
 		response_data['success'] = '1'
 		global data
