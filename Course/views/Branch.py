@@ -5,7 +5,52 @@ from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_POST, require_GET
 import json
 
-#get Branch By COde
+@csrf_exempt
+@require_POST
+def addBranch(request):
+	response_data = {}
+	try:
+		B = Branch.objects.addBranch(request.POST)
+	except Exception as e:
+		response_data['success'] = '0'
+		response_data['exception'] = str(e)
+	else :
+		response_data['success'] = '1'
+		data = serializers.serialize('json', [ B, ])
+		response_data["branch"] = json.loads(data)
+	return JsonResponse(response_data)
+
+@csrf_exempt
+@require_POST
+def editBranch(request):
+	response_data = {}
+	try:
+		B = Branch.objects.editBranch(request.POST)
+	except Exception as e:
+		response_data['success'] = '0'
+		response_data['exception'] = str(e)
+	else :
+		response_data['success'] = '1'
+		data = serializers.serialize('json', [ B, ])
+		response_data["branch"] = json.loads(data)
+	return JsonResponse(response_data)
+
+@csrf_exempt
+@require_POST
+def deleteBranch(request):
+	response_data = {}
+	try:
+		B = Branch.objects.deleteBranch(request.POST)
+	except Exception as e:
+		response_data['success'] = '0'
+		response_data['exception'] = str(e)
+	else :
+		response_data['success'] = '1'
+		data = serializers.serialize('json', [ B, ])
+		response_data["branch"] = json.loads(data)
+	return JsonResponse(response_data)
+
+
 @csrf_exempt
 @require_GET
 def retrieveBranches(request):
