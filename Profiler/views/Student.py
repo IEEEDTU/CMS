@@ -52,10 +52,10 @@ def deleteStudent(request):
 
 @csrf_exempt
 @require_GET
-def getStudentById(request):
+def getStudentByRollNo(request):
 	response_data = {}
 	try:
-		S = Student.objects.getStudentById(request.GET)
+		S = Student.objects.getStudentByRollNo(request.GET)
 	except Exception as e:
 		response_data["success"] = 0
 		response_data['exception'] = str(e)
