@@ -57,13 +57,12 @@ def getInstructorDetails(request):
 	response_data = {}
 	try:
 		C = CourseGroup.objects.getCourseGroupById(request.GET)
-		I = Faculty.objects.get(dtuRegId = C.instructor)
 	except Exception as e:
 		response_data["success"] = 0
 		response_data['exception'] = str(e)
 	else:
 		response_data["success"] = 1
-		data = serializers.serialize('json', [I, ])
+		data = serializers.serialize('json', [ C.instructor, ])
 		response_data["instructor"] = json.loads(data)
 
 	return JsonResponse(response_data)

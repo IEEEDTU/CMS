@@ -13,4 +13,5 @@ urlpatterns = [
     url(r'^retrieveBatches', views.retrieveBatches, name='retrieveBatches'),
     url(r'^getBatchById', views.getBatchById, name='getBatchById'),
     # url(r'^retrieveCourseGroups', views.retrieveCourseGroups, name='retrieveCourseGroups'),
+    url(r'^getInstructorDetails', views.getInstructorDetails, name='getInstructorDetails'),
 ]
