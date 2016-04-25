@@ -64,7 +64,7 @@ def getInstructorDetails(request):
 	else:
 		response_data["success"] = 1
 		data = serializers.serialize('json', [I, ])
-		response_data["course"] = json.loads(data)
+		response_data["instructor"] = json.loads(data)
 
 	return JsonResponse(response_data)
 
