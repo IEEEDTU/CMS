@@ -63,6 +63,7 @@ def getStudentByRollNo(request):
 		response_data["success"] = 1
 		data = serializers.serialize('json', [ S, ])
 		response_data["student"] = json.loads(data)
+		del response_data["student"][0]["fields"]["password"]
 
 	return JsonResponse(response_data)
 
