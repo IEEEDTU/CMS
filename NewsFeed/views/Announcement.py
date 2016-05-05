@@ -48,10 +48,10 @@ def deleteAnnouncement(request):
 
 @csrf_exempt
 @require_GET
-def retrieveLatestAnnouncement(request):
+def retrieveLatestAnnouncements(request):
 	response_data = {}
 	try:
-		A = Announcement.objects.retrieveLatestAnnouncement(request.GET)
+		A = Announcement.objects.retrieveLatestAnnouncements(request.GET)
 	except Exception as e:
 		response_data['success'] = '0'
 		response_data['exception'] = str(e)
@@ -62,15 +62,15 @@ def retrieveLatestAnnouncement(request):
 			data = serializers.serialize('json', A)
 		except Exception as e:
 			data = serializers.serialize('json', [ A, ])
-		response_data["announcement"] = json.loads(data)
+		response_data["announcements"] = json.loads(data)
 	return JsonResponse(response_data)
 
 @csrf_exempt
 @require_GET
-def retrieveMoreAnnouncement(request):
+def retrieveMoreAnnouncements(request):
 	response_data = {}
 	try:
-		A = Announcement.objects.retrieveMoreAnnouncement(request.GET)
+		A = Announcement.objects.retrieveMoreAnnouncements(request.GET)
 	except Exception as e:
 		response_data['success'] = '0'
 		response_data['exception'] = str(e)
@@ -81,7 +81,7 @@ def retrieveMoreAnnouncement(request):
 			data = serializers.serialize('json', A)
 		except Exception as e:
 			data = serializers.serialize('json', [ A, ])
-		response_data["announcement"] = json.loads(data)
+		response_data["announcements"] = json.loads(data)
 	return JsonResponse(response_data)
 
 

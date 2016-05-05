@@ -14,17 +14,18 @@ class CourseManager(models.Manager):
     def addCourse(self, request):
         """ add new course """
         C = Course(
-            courseId=request['courseId'],
-            courseName=request['courseName'],
-            courseType=request['courseType'],
-            credits=request['credits'],
-            sessMaxMarks=request['sessMaxMarks'],
-            endMaxSemMarks=request['endMaxSemMarks'],
-            maxMarks=request['maxMarks'],
-            minPassingMarks=request['minPassingMarks'],
-            semester=request['semester'],
-            degree=Degree.objects.get(degreeCode=request['degreeCode'], degreeType=request["degreeType"]),
-            branch=Branch.objects.get(branchCode=request['branchCode'])
+            courseId = request['courseId'],
+            courseName = request['courseName'],
+            courseType = request['courseType'],
+            description = request['description'],
+            credits = request['credits'],
+            sessMaxMarks = request['sessMaxMarks'],
+            endMaxSemMarks = request['endMaxSemMarks'],
+            maxMarks = request['maxMarks'],
+            minPassingMarks = request['minPassingMarks'],
+            semester = request['semester'],
+            degree = Degree.objects.get(degreeCode=request['degreeCode'], degreeType=request["degreeType"]),
+            branch = Branch.objects.get(branchCode=request['branchCode'])
         )
         C.save()
         return C
@@ -36,6 +37,7 @@ class CourseManager(models.Manager):
         C.courseId = request["courseId"]
         C.courseName = request["courseName"]
         C.courseType = request["courseType"]
+        C.description = request["description"]
         C.credits = request["credits"]
         C.sessMaxMarks = request["sessMaxMarks"]
         C.endMaxSemMarks = request["endMaxSemMarks"]
@@ -92,6 +94,8 @@ class Course(models.Model):
     courseName = models.CharField(max_length=100, blank=False, null=False)
     # Course type
     courseType = models.CharField(max_length=10, blank=False, null=False)
+    # Course Description
+    description = models.CharField(max_length=1000, blank=False, null=False)
     # Maximum credits
     credits = models.IntegerField()
     # Maximum sessional marks

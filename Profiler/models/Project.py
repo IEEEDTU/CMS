@@ -1,7 +1,6 @@
 from django.db import models
 from Profiler.models import Student
 
-
 class ProjectManager(models.Manager):
     def addProject(self, request):
         """ adds new project """

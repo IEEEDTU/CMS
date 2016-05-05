@@ -53,10 +53,10 @@ def deleteEvent(request):
 
 @csrf_exempt
 @require_GET
-def retrieveLatestEvent(request):
+def retrieveLatestEvents(request):
 	response_data = {}
 	try:
-		E = Event.objects.retrieveLatestEvent(request.GET)
+		E = Event.objects.retrieveLatestEvents(request.GET)
 	except Exception as e:
 		response_data['success'] = '0'
 		response_data['exception'] = str(e)
@@ -67,15 +67,15 @@ def retrieveLatestEvent(request):
 			data = serializers.serialize('json', E)
 		except Exception as e:
 			data = serializers.serialize('json', [ E, ])
-		response_data["event"] = json.loads(data)
+		response_data["events"] = json.loads(data)
 	return JsonResponse(response_data)
 
 @csrf_exempt
 @require_GET
-def retrieveMoreEvent(request):
+def retrieveMoreEvents(request):
 	response_data = {}
 	try:
-		E = Event.objects.retrieveMoreEvent(request.GET)
+		E = Event.objects.retrieveMoreEvents(request.GET)
 	except Exception as e:
 		response_data['success'] = '0'
 		response_data['exception'] = str(e)
@@ -86,5 +86,5 @@ def retrieveMoreEvent(request):
 			data = serializers.serialize('json', E)
 		except Exception as e:
 			data = serializers.serialize('json', [ E, ])
-		response_data["event"] = json.loads(data)
+		response_data["events"] = json.loads(data)
 	return JsonResponse(response_data)

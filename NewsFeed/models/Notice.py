@@ -50,17 +50,17 @@ class NoticeManager(models.Manager):
         N = N.delete()
         return N
 
-    def retrieveLatestNotice(self, request):
+    def retrieveLatestNotices(self, request):
         """ retrieves latest Notice """
         """ criteria is to just return top 10 news """
         lastTen = Notice.objects.filter(date__gte=request['since']).order_by('-date')[:10]
         return lastTen
 
-    def retrieveMoreNotice(self, request):
+    def retrieveMoreNotices(self, request):
         N = Notice.objects.all()
         paginator = Paginator(N, request['rowsPerPage'])
     
-        page = request['page']
+        page = request['pageNo']
         try:
             notice = paginator.page(page)
         except PageNotAnInteger:

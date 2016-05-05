@@ -53,10 +53,10 @@ def deleteNotice(request):
 
 @csrf_exempt
 @require_GET
-def retrieveLatestNotice(request):
+def retrieveLatestNotices(request):
 	response_data = {}
 	try:
-		N = Notice.objects.retrieveLatestNotice(request.GET)
+		N = Notice.objects.retrieveLatestNotices(request.GET)
 	except Exception as e:
 		response_data['success'] = '0'
 		response_data['exception'] = str(e)
@@ -67,15 +67,15 @@ def retrieveLatestNotice(request):
 			data = serializers.serialize('json', N)
 		except Exception as e:
 			data = serializers.serialize('json', [ N, ])
-		response_data["notice"] = json.loads(data)
+		response_data["notices"] = json.loads(data)
 	return JsonResponse(response_data)
 
 @csrf_exempt
 @require_GET
-def retrieveMoreNotice(request):
+def retrieveMoreNotices(request):
 	response_data = {}
 	try:
-		N = Notice.objects.retrieveMoreNotice(request.GET)
+		N = Notice.objects.retrieveMoreNotices(request.GET)
 	except Exception as e:
 		response_data['success'] = '0'
 		response_data['exception'] = str(e)
@@ -86,5 +86,5 @@ def retrieveMoreNotice(request):
 			data = serializers.serialize('json', N)
 		except Exception as e:
 			data = serializers.serialize('json', [ N, ])
-		response_data["notice"] = json.loads(data)
+		response_data["notices"] = json.loads(data)
 	return JsonResponse(response_data)
