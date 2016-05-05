@@ -82,6 +82,6 @@ def getBranchByCode(request):
 	else:
 		response_data["success"] = 1
 		data = serializers.serialize('json', [B, ])
-		response_data["course"] = json.loads(data)
+		response_data["branch"] = json.loads(data)
 
 	return JsonResponse(response_data)

@@ -82,6 +82,6 @@ def getBatchById(request):
 	else:
 		response_data["success"] = 1
 		data = serializers.serialize('json', [B, ])
-		response_data["batches"] = json.loads(data)
+		response_data["batch"] = json.loads(data)
 
 	return JsonResponse(response_data)
