@@ -5,23 +5,25 @@ from .AcademicDegree import *
 class BatchManager(models.Manager):
     def addBatch(self, request):
         """ add new batch """
+        degre = Degree.objects.get(degreeCode = request['degreeCode'])
+        dep = Department.objects.get(deptId = request['deptId'])
         B = Batch(
-            batchType=request['batchType'],
-            degree=request['degree'],
-            dept=request['dept'],
-            strength=request['strength'])
+            batchType = request['batchType'],
+            degree = degre,
+            dept = dep,
+            strength = request['strength'])
         B.save()
         return B
 
     def deleteBatch(self, request):
         """ deletes existing batch on the basis of batch ID """
-        B = Batch.objects.get(batchId=request['batchId'])
+        B = Batch.objects.get(batchId = request['batchId'])
         B = B.delete()
         return B
 
     def getBatchById(self, request):
         """ get the batch object using the batch ID """
-        B = Batch.objects.get(batchId=request['batchId'])
+        B = Batch.objects.get(batchId = request['batchId'])
         return B
 
     def retrieveBatches(self, request):
@@ -29,7 +31,7 @@ class BatchManager(models.Manager):
         """ note: type is optional field """
         B = Batch.objects.all()
         if 'batchType' in request.keys():
-            B = Batch.objects.filter(batchType=request["batchType"])
+            B = Batch.objects.filter(batchType = request["batchType"])
 
         # idList = []
         # for b in B:
