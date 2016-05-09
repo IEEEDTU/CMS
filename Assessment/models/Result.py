@@ -6,7 +6,7 @@ class ResultManager(models.Manager):
     def initResult(self, request):
         """ initialize the result and score of student """
         # initializing result
-        S = Student.objects.get(dtuRegId=request['dtuRegId'])
+        S = Student.objects.getStudentByRegIdOrRollNo(request)
         R = Result(
             student=S,
             semester=request['semester']
@@ -24,7 +24,7 @@ class ResultManager(models.Manager):
     def calculateResult(self, request):
         """ calculate the marks obtained from score class """
         # retrieving result object
-        S = Student.objects.get(dtuRegId=request['dtuRegId'])
+        S = Student.objects.getStudentByRegIdOrRollNo(request)
         R = Result.objects.get(student=S, semester=request['semester'])
 
         # calculating result
@@ -45,13 +45,13 @@ class ResultManager(models.Manager):
 
     def getResult(self, request):
         """ get the result on the basis of student and semester """
-        S = Student.objects.get(dtuRegId=request['dtuRegId'])
+        S = Student.objects.getStudentByRegIdOrRollNo(request)
         R = Result.objects.get(student=S, semester=request['semester'])
         return R
 
     def getResultsByStudent(self, request):
         """ get the result on the basis of student """
-        S = Student.objects.get(dtuRegId=request['dtuRegId'])
+        S = Student.objects.getStudentByRegIdOrRollNo(request)
         R = Result.objects.filter(student=S)
         return R
 

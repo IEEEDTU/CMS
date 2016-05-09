@@ -6,8 +6,8 @@ from Course.models import Course
 class ScoreManager(models.Manager):
     def initScore(self, request):
         """ initialize the score """
-        S = Student.objects.get(dtuRegId=request['dtuRegId'])
-        C = Course.objects.get(courseId=request['courseId'])
+        S = Student.objects.getStudentByRegIdOrRollNo(request)
+        C = Course.objects.getCourseById(request)
         Sc = Score(
             student=S,
             course=C
@@ -17,8 +17,8 @@ class ScoreManager(models.Manager):
 
     def saveScore(self, request):
         """ save the score """
-        S = Student.objects.get(dtuRegId=request['dtuRegId'])
-        C = Course.objects.get(courseId=request['courseId'])
+        S = Student.objects.getStudentByRegIdOrRollNo(request)
+        C = Course.objects.getCourseById(request)
         Sc = Score.objects.get(student=S, course=C)
         Sc.sessMarks=request['sessMarks']
         Sc.endMarks=request['endMarks']
@@ -29,20 +29,20 @@ class ScoreManager(models.Manager):
 
     def getScore(self, request):
         """ get score on the basis of student and course """
-        S = Student.objects.get(dtuRegId=request['dtuRegId'])
-        C = Course.objects.get(courseId=request['courseId'])
+        S = Student.objects.getStudentByRegIdOrRollNo(request)
+        C = Course.objects.getCourseById(request)
         Sc = Score.objects.get(student=S, course=C)
         return Sc
 
     def getScoresByStudent(self, request):
         """ get score according to student """
-        S = Student.objects.get(dtuRegId=request['dtuRegId'])
+        S = Student.objects.getStudentByRegIdOrRollNo(request)
         Sc = Score.objects.filter(student=S)
         return Sc
 
     def getScoresByCourse(self, request):
         """ get score according to course """
-        C = Course.objects.get(courseId=request['courseId'])
+        C = Course.objects.getCourseById(request)
         Sc = Score.objects.filter(course=C)
         return Sc
 

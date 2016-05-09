@@ -49,15 +49,18 @@ class StudentManager(models.Manager):
         S = Student.objects.get(rollNo=request["rollNo"])
         return S
 
+    def getStudentByRegIdOrRollNo(self, request):
+        """ To get the object of student by its dtuRegId or roll no, whatever specified in request """
+        if "dtuRegId" in request.keys():
+            S = Student.objects.get(dtuRegId=request["dtuRegId"])
+        else:
+            S = Student.objects.get(rollNo=request["rollNo"])
+        return S
+
     def getStudentByName(self, request):
         """ To get the objects of student by its name """
         N = Name.objects.get(preferredName=request['preferredName'])
         S = Student.objects.get(name=N)
-        # rollNoList = []
-        # for n in N:
-        #	S = Student.objects.filter(name = n)
-        #	for s in S:
-        #		rollNoList.append(s.rollNo)
         return S
 
     def retrieveStudents(self, request):

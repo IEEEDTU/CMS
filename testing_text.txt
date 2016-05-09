@@ -77,19 +77,15 @@ degree0 = {
 	'annualFee': '70000',
 	'lateFine': '500',
 	'admissionFee': '75000'
-	}
+}
 
-d = {
-	'degreeCode' : 'BTECH'
-		}
-		
 branch0 = {
 	'branchCode': 'SE',
 	'branchName': 'Software Engineering',
 	'seatsAvailable': '100',
 	'degreeCode': 'BTECH',
 	'deptId': 'CSEX'
-	}
+}
 
 course0 = {
     "courseId":"SE202",
@@ -145,7 +141,7 @@ dpt0 = {
 	'branchCount': '3',
 	'studentStrength': '300',
 	'facultyStrength': '20'
-	}
+}
 
 project0 = {
     'dtuRegId' : "DTU/2K12/B08/1501",
@@ -158,21 +154,19 @@ project0 = {
     'teamSize' : 3
 }
 
-from NewsFeed.models import *
 ann0 = {
     'title': "Bla Bla Announcement",
     'content': "This is a Bla Bla event",
     'courseId': "SE202",
     'groupId':"A1"
 }
-Announcement.objects.addAnnouncement(ann0)
-Announcement.objects.retrieveAnnouncements(ann0)
 
 nt0 = {
     'subject':"Examination postponed",
     'issuingAuthority':"Academic department",
     'fileLink':"http://www.facebook.com"
 }
+
 nt1 = {
     'subject':"Examination postponed",
     'issuingAuthority':"Academic department",
@@ -197,6 +191,37 @@ news1 = {
     'rollNo': "2K12/SE/001",
 }
 
+news2 = {
+    'id':2,
+    'headline':"DTU launched deferred placement policy",
+    'description':"Deferred placement policy launched for the students having interest in entrepreneurship",
+    'image':"www.imac.com",
+    'link':"dtu.ac.in",
+    'facultyId':"CSE/030",
+    'date':"2016-04-20"
+}
+
+event0 = {
+    'eventName': 'Data Mining Workshop',
+    'startDateTime': '2016-04-04 20:04:50.308998',
+    'description': 'Data Mining Workshop by Vaibhav Sawhney',
+    'organisedBy': 'IEEEDTU',
+    'mobile': {'countryCode': 21, 'mobileNum': 9999955533},
+    'email': 'example@example.com',
+}
+
+event1 = {
+    'eventName': 'Data Mining Workshop',
+    'startDateTime': '2016-04-05 20:04:50.308998',
+    'endDateTime': '2016-04-04 20:04:50.308998',
+    'description': 'Data Mining Workshop by Vaibhav Sawhney',
+    'organisedBy': 'IEEEDTU',
+    'mobile': {'countryCode': 21, 'mobileNum': 9999955533},
+    'email': 'example@example.com',
+    'fbEvent': 'www.facebook.com',
+    'website': 'www.ieee.dcetech.com',
+    'image': 'drive.google.co.in/image1'
+}
 
 book0 = {
     'courseId': 'SE202',
@@ -232,35 +257,19 @@ web0 = {
     'link':"www.dropbox.com"
 }
 
-event0 = {
-    'eventName': 'Data Mining Workshop',
-    'startDateTime': '2016-04-04 20:04:50.308998',
-    'description': 'Data Mining Workshop by Vaibhav Sawhney',
-    'organisedBy': 'IEEEDTU',
-    'mobile': {'countryCode': 21, 'mobileNum': 9999955533},
-    'email': 'example@example.com',
-}
-event1 = {
-    'eventName': 'Data Mining Workshop',
-    'startDateTime': '2016-04-05 20:04:50.308998',
-    'endDateTime': '2016-04-04 20:04:50.308998',
-    'description': 'Data Mining Workshop by Vaibhav Sawhney',
-    'organisedBy': 'IEEEDTU',
-    'mobile': {'countryCode': 21, 'mobileNum': 9999955533},
-    'email': 'example@example.com',
-    'fbEvent': 'www.facebook.com',
-    'website': 'www.ieee.dcetech.com',
-    'image': 'drive.google.co.in/image1'
+cgroup0 = {
+    'courseId': "SE202",
+    'groupId': "A1",
+    'facultyId': "CSE/030",
+    'branchCode': "SE"
 }
 
-news0 = {
-    'id':2,
-    'headline':"DTU launched deferred placement policy",
-    'description':"Deferred placement policy launched for the students having interest in entrepreneurship",
-    'image':"www.imac.com",
-    'link':"dtu.ac.in",
-    'facultyId':"CSE/030",
-    'date':"2016-04-20"
+group0={
+    'semester': 3,
+    'startRollNo': "2K12/SE/001",
+    'endRollNo': "2K12/SE/030",
+    'branchCode': "SE",
+    'strength': 30
 }
 
 score0 = {
@@ -280,4 +289,22 @@ result0 = {
     'degreeCode': "BTech",
     'degreeType': "Regular",
     'branchCode': "SE"
+}
+
+assign0 = {
+    'link': "www.google.com",
+    'courseId': "SE202",
+    'deadline': "2016-05-19",
+    'comments': "none"
+}
+assign1 = {
+    'groupId': "A1",
+    'branchCode': "SE"
+}
+
+aresponse0 = {
+    'assignmentCode': "SE202A",
+    'rollNo': "2K12/SE/001",
+    'responseLink': "www.google.com",
+    'grade': "C"
 }
