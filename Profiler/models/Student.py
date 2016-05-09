@@ -60,6 +60,24 @@ class StudentManager(models.Manager):
         #		rollNoList.append(s.rollNo)
         return S
 
+    def retrieveStudents(self, request):
+        """ retrieve students on the basis of degree, branch, admissionYear, graduationYear, category """
+        S = Student.objects.all()
+        if "degreeCode" in request.keys():
+            D = Degree.objects.get(degreeCode=request["degreeCode"], degreeType=request["degreeType"])
+            S = S.filter(degree=D)
+        if "branchCode" in request.keys():
+            B = Branch.objects.get(branchCode=request["branchCode"])
+            S = S.filter(branch=B)
+        if "admissionYear" in request.keys():
+            S = S.filter(admissionYear=request["admissionYear"])
+        if "graduationYear" in request.keys():
+            S = S.filter(graduationYear=request["graduationYear"])
+        if "category" in request.keys():
+            S = S.filter(category=request["category"])
+
+        return S
+
     def deleteStudent(self, request):
         """ deletes student on basis of dtuRegId or rollNo """
         if 'dtuRegId' in request.keys():

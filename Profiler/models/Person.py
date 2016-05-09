@@ -152,7 +152,7 @@ class Mobile(models.Model):
 
 class Person(models.Model):
     # DTU Registration ID
-    dtuRegId = models.CharField(max_length=10, primary_key=True, blank=False, null=False)
+    dtuRegId = models.CharField(max_length=30, primary_key=True, blank=False, null=False)
     # Person's Name
     name = models.ForeignKey(Name, related_name="%(class)s_name", on_delete=models.CASCADE, default=False)
     # Permanent Address

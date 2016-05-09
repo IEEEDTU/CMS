@@ -262,3 +262,22 @@ news0 = {
     'facultyId':"CSE/030",
     'date':"2016-04-20"
 }
+
+score0 = {
+    'dtuRegId': "DTU/2K12/B08/1200",
+    'courseId': "SE202",
+    'sessMarks': 21,
+    'endMarks': 58,
+    'marksObtained': 79,
+    'creditsGained': 30
+}
+
+result0 = {
+    'dtuRegId': "DTU/2K12/B08/1200",
+    'marksObtained': 79,
+    'creditsGained': 30,
+    'semester': 3,
+    'degreeCode': "BTech",
+    'degreeType': "Regular",
+    'branchCode': "SE"
+}
