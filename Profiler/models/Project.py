@@ -1,12 +1,13 @@
 from django.db import models
 from Profiler.models import Student
 
+
 class ProjectManager(models.Manager):
     def addProject(self, request):
         """ adds new project """
-        studentObj = Student.objects.getStudentByRegId(request)
+        S = Student.objects.getStudentByRegIdOrRollNo(request)
         P = Project(
-            student=studentObj,
+            student=S,
             title=request['title'],
             description=request['description'],
             highlight=request['highlight'],
@@ -18,25 +19,39 @@ class ProjectManager(models.Manager):
         P.save()
         return P
 
+    def editProject(self, request):
+        """ edit the project """
+        P = Project.objects.get(id=request['id'])
+
+        P.title=request['title']
+        P.description=request['description']
+        P.highlight=request['highlight']
+        P.startDate=request['startDate']
+        P.endDate=request['endDate']
+        P.projectType=request['projectType']
+        P.teamSize=request['teamSize']
+
+        P.save()
+        return P
+
     def getProjectById(self, request):
         """ get project details based on project id """
         P = Project.objects.get(id=request['id'])
         return P
 
     def retrieveProjects(self, request):
-        """ retrieve IDs of all the projects depending on the request """
+        """ retrieve projects of student depending on the request """
         """ note: student is must """
-        """ other optional attributes: projectType, startDate """
-        S = Student.objects.getStudentByRegId(request)
-        objList = Project.objects.filter(student=S)
+        """ other optional attributes: projectType, title """
+        S = Student.objects.getStudentByRegIdOrRollNo(request)
+        P = Project.objects.filter(student=S)
 
         if 'projectType' in request.keys():
-            objList = objList.filter(projectType=request['projectType'])
+            P = P.filter(projectType=request['projectType'])
+        if 'title' in request.keys():
+            P = P.filter(title=request['title'])
 
-        idList = []
-        for obj in objList:
-            idList.append(obj.id)
-        return idList
+        return P
 
     def deleteProject(self, request):
         """ deletes existing project """
@@ -47,14 +62,18 @@ class ProjectManager(models.Manager):
 
 class Project(models.Model):
     # Options for projects
-    MAJOR = 'MJ'
-    MINOR = 'MI'
-    RESEARCH = 'RS'
-    OTHER = 'OT'
+    MAJOR = 'MAJ'
+    MINOR = 'MIN'
+    RESEARCH = 'RES'
+    INTERN = 'INT'
+    TRAINING = 'TRA'
+    OTHER = 'OTH'
     PROJECT_CHOICES = (
         (MAJOR, 'Major'),
         (MINOR, 'Minor'),
         (RESEARCH, 'Research'),
+        (INTERN, 'Intern'),
+        (TRAINING, 'Training'),
         (OTHER, 'Other'))
 
     # Student
