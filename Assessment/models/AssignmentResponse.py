@@ -32,7 +32,7 @@ class AssignmentResponseManager(models.Manager):
         A = Assignment.objects.getAssignmentByCode(request)
         S = Student.objects.getStudentByRegIdOrRollNo(request)
         AR = AssignmentResponse.objects.get(assignment=A, student=S)
-        AR.delete()
+        AR = AR.delete()
         return AR
 
     def retrieveAssignmentResponsesByAssignment(self, request):

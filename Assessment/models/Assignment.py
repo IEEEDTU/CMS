@@ -43,7 +43,7 @@ class AssignmentManager(models.Manager):
     def deleteAssignment(self, request):
         """ delete an existing assignment """
         A = Assignment.objects.get(assignmentCode=request['assignmentCode'])
-        A.delete()
+        A = A.delete()
         return A
 
     def getAssignmentByCode(self, request):
