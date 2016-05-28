@@ -67,6 +67,25 @@ def getStudentByRollNo(request):
 
 	return JsonResponse(response_data)
 
+@csrf_exempt
+@require_GET
+def retrieveProjects(request):
+    response_data = {}
+    try:
+        C = Project.objects.retrieveProjects(request.GET)
+    except Exception as e:
+        response_data['success'] = '0'
+        response_data['exception'] = str(e)
+    else:
+        response_data['success'] = '1'
+        global data
+        try:
+            data = serializers.serialize('json', C)
+        except Exception as e:
+            data = serializers.serialize('json', [C, ])
+        response_data["projects"] = json.loads(data)
+
+    return JsonResponse(response_data)
 
 """
 def searchStudent(request):
