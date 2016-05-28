@@ -1,4 +1,4 @@
-﻿from django.db import models
+from django.db import models
 from .Branch import *
 from .AcademicDegree import *
 
@@ -84,6 +84,47 @@ class CourseManager(models.Manager):
         # idList = []
         # for obj in C:
         #    idList.append(obj.courseId)
+        return C
+
+
+    def retrieveOddCourses(self, request):
+        """ retrieve IDs of all the courses depending on the request """
+        """ note: degree, branch is must """
+        """ other optional attributes: semester, courseType """
+        D = Degree.objects.get(degreeCode=request["degreeCode"], degreeType=request["degreeType"])
+        C = Course.objects.filter(degree=D)
+
+        B = Branch.objects.get(branchCode=request["branchCode"])
+        C = C.filter(branch=B)
+        C = C.filter(semester__in=[1,3,5,7])
+        if "courseType" in request.keys():
+            C = C.filter(courseType=request["courseType"])
+
+        # idList = []
+        # for obj in C:
+        #    idList.append(obj.courseId)
+        C=C.order_by('semester')
+
+        return C
+
+    def retrieveEvenCourses(self, request):
+        """ retrieve IDs of all the courses depending on the request """
+        """ note: degree, branch is must """
+        """ other optional attributes: semester, courseType """
+        D = Degree.objects.get(degreeCode=request["degreeCode"], degreeType=request["degreeType"])
+        C = Course.objects.filter(degree=D)
+
+        B = Branch.objects.get(branchCode=request["branchCode"])
+        C = C.filter(branch=B)
+        C = C.filter(semester__in=[2, 4, 6, 8])
+        if "courseType" in request.keys():
+            C = C.filter(courseType=request["courseType"])
+
+        # idList = []
+        # for obj in C:
+        #    idList.append(obj.courseId)
+        C=C.order_by('semester')
+
         return C
 
 
