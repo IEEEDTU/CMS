@@ -7,6 +7,7 @@ urlpatterns = [
 	url(r'^editStudent', views.editStudent, name='editStudent'),
 	url(r'^deleteStudent', views.deleteStudent, name='deleteStudent'),
 	url(r'^retrieveProjects', views.retrieveProjects, name='retrieveProjects'),
+	url(r'^addProject', views.addProject, name='addProject'),
 	url(r'^getStudentByRollNo', views.getStudentByRollNo, name='getStudentByRollNo'),
 	
 	url(r'^addFaculty', views.addFaculty, name='addFaculty'),
