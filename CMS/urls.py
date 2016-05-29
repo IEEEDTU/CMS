@@ -21,6 +21,8 @@ from Course import urls as course_urls
 from NewsFeed import urls as newsfeed_urls
 from Profiler import urls as profiler_urls
 from Resource import urls as resource_urls
+from Assessment import urls as assessment_urls
+
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -28,4 +30,6 @@ urlpatterns = [
     url(r'^newsfeed/',include(newsfeed_urls)),
     url(r'^profiler/',include(profiler_urls)),
     url(r'^resource/',include(resource_urls)),
+    url(r'^assessment/', include(assessment_urls)),
+
 ]
