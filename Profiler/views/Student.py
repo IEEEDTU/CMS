@@ -102,6 +102,108 @@ def addProject(request):
 		response_data["student"] = json.loads(data)
 	return JsonResponse(response_data)
 
+@csrf_exempt
+@require_GET
+def retrieveSkills(request):
+    response_data = {}
+    try:
+        P = Skill.objects.retrieveSkills(request.GET)
+    except Exception as e:
+        response_data['success'] = '0'
+        response_data['exception'] = str(e)
+    else:
+        response_data['success'] = '1'
+        global data
+        try:
+            data = serializers.serialize('json', P)
+        except Exception as e:
+            data = serializers.serialize('json', [P, ])
+        response_data["skills"] = json.loads(data)
+
+    return JsonResponse(response_data)
+
+@csrf_exempt
+@require_GET
+def retrieveFields(request):
+    response_data = {}
+    try:
+        P = Field.objects.retrieveFields(request.GET)
+    except Exception as e:
+        response_data['success'] = '0'
+        response_data['exception'] = str(e)
+    else:
+        response_data['success'] = '1'
+        global data
+        try:
+            data = serializers.serialize('json', P)
+        except Exception as e:
+            data = serializers.serialize('json', [P, ])
+        response_data["fields"] = json.loads(data)
+
+    return JsonResponse(response_data)
+
+
+
+@csrf_exempt
+@require_POST
+def addSkill(request):
+	response_data = {}
+	try:
+		S = Skill.objects.addSkill(request.POST)
+	except Exception as e:
+		response_data['success'] = '0'
+		response_data['exception'] = str(e)
+	else :
+		response_data['success'] = '1'
+		data = serializers.serialize('json', [ S, ])
+		response_data["student"] = json.loads(data)
+	return JsonResponse(response_data)
+
+@csrf_exempt
+@require_POST
+def addField(request):
+	response_data = {}
+	try:
+		S = Field.objects.addField(request.POST)
+	except Exception as e:
+		response_data['success'] = '0'
+		response_data['exception'] = str(e)
+	else :
+		response_data['success'] = '1'
+		data = serializers.serialize('json', [ S, ])
+		response_data["student"] = json.loads(data)
+	return JsonResponse(response_data)
+
+@csrf_exempt
+@require_POST
+def deleteSkill(request):
+	response_data = {}
+	try:
+		S = Skill.objects.deleteSkill(request.POST)
+	except Exception as e:
+		response_data['success'] = '0'
+		response_data['exception'] = str(e)
+	else :
+		response_data['success'] = '1'
+		data = serializers.serialize('json', [ S, ])
+		response_data["student"] = json.loads(data)
+	return JsonResponse(response_data)
+
+@csrf_exempt
+@require_POST
+def deleteField(request):
+	response_data = {}
+	try:
+		S = Field.objects.deleteField(request.POST)
+	except Exception as e:
+		response_data['success'] = '0'
+		response_data['exception'] = str(e)
+	else :
+		response_data['success'] = '1'
+		data = serializers.serialize('json', [ S, ])
+		response_data["student"] = json.loads(data)
+	return JsonResponse(response_data)
+
 """
 def searchStudent(request):
     

@@ -33,3 +33,5 @@ urlpatterns = [
     url(r'^assessment/', include(assessment_urls)),
 
 ]
+
+admin.site.site_header = 'OnCourse Administration'
