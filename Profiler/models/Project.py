@@ -1,5 +1,5 @@
 from django.db import models
-from Profiler.models import Student
+from .Student import *
 
 
 class ProjectManager(models.Manager):
@@ -43,7 +43,7 @@ class ProjectManager(models.Manager):
         """ retrieve projects of student depending on the request """
         """ note: student is must """
         """ other optional attributes: projectType, title """
-        S = Student.objects.getStudentByRegIdOrRollNo(request)
+        S = Student.objects.getStudentByRollNo(request)
         P = Project.objects.filter(student=S)
 
         if 'projectType' in request.keys():

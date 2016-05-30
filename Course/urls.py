@@ -5,6 +5,8 @@ from . import views
 urlpatterns = [
     url(r'^addCourse', views.addCourse, name='addCourse'),
     url(r'^retrieveCourses', views.retrieveCourses, name='retrieveCourses'),
+    url(r'^retrieveOddCourses', views.retrieveOddCourses, name='retrieveOddCourses'),
+    url(r'^retrieveEvenCourses', views.retrieveEvenCourses, name='retrieveEvenCourses'),
     url(r'^getCourseById', views.getCourseById, name='getCourseById'),
     
     url(r'^addDegree', views.addDegree, name='addDegree'),
@@ -40,4 +42,11 @@ urlpatterns = [
     url(r'^editGroup', views.editGroup, name='editGroup'),
     url(r'^deleteGroup', views.deleteGroup, name='deleteGroup'),
     url(r'^retrieveGroups', views.retrieveGroups, name='retrieveGroups'),
+
+    url(r'^addCourseCurriculum', views.addCourseCurriculum, name='addCourseCurriculum '),
+    url(r'^editCourseCurriculum', views.editCourseCurriculum, name='editCourseCurriculum '),
+    url(r'^deleteCourseCurriculum', views.deleteCourseCurriculum, name='deleteCourseCurriculum'),
+    url(r'^getCourseCurriculum', views.getCourseCurriculum, name='getCourseCurriculum'),
+    url(r'^retrieveCourseCurriculum', views.retrieveCourseCurriculum, name='retrieveCourseCurriculum'),
+
 ]

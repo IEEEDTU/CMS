@@ -1,5 +1,6 @@
 from django.db import models
 from Course.models import *
+from django.apps import apps
 
 
 class CourseCurriculumManager(models.Manager):
