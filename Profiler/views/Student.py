@@ -4,6 +4,7 @@ from Profiler.models import *
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_POST, require_GET
 import json
+from datetime import datetime
 
 @csrf_exempt
 @require_POST
@@ -92,6 +93,14 @@ def retrieveProjects(request):
 def addProject(request):
 	response_data = {}
 	try:
+		#startDate = datetime.strptime(request.POST['startDate'][:-27], '%a %b %d %Y %H:%M:%S %Z')
+		#request.POST['startDate'] = str(startDate.year) + "-" + str(startDate.month) + "-" + str(startDate.day)
+
+		#endDate = datetime.strptime(request.POST['endDate'][:-27], '%a %b %d %Y %H:%M:%S %Z')
+		#request.POST['endDate'] = str(endDate.year) + "-" + str(endDate.month) + "-" + str(endDate.day)
+
+		print(request.POST['startDate'])
+		print(request.POST['endDate'])
 		P = Project.objects.addProject(request.POST)
 	except Exception as e:
 		response_data['success'] = '0'
