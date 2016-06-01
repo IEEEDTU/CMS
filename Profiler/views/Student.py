@@ -165,7 +165,7 @@ def addSkill(request):
 	else :
 		response_data['success'] = '1'
 		data = serializers.serialize('json', [ S, ])
-		response_data["student"] = json.loads(data)
+		response_data["skill"] = json.loads(data)
 	return JsonResponse(response_data)
 
 @csrf_exempt
@@ -180,7 +180,7 @@ def addField(request):
 	else :
 		response_data['success'] = '1'
 		data = serializers.serialize('json', [ S, ])
-		response_data["student"] = json.loads(data)
+		response_data["field"] = json.loads(data)
 	return JsonResponse(response_data)
 
 @csrf_exempt
@@ -194,8 +194,6 @@ def deleteSkill(request):
 		response_data['exception'] = str(e)
 	else :
 		response_data['success'] = '1'
-		data = serializers.serialize('json', [ S, ])
-		response_data["student"] = json.loads(data)
 	return JsonResponse(response_data)
 
 @csrf_exempt
@@ -209,8 +207,6 @@ def deleteField(request):
 		response_data['exception'] = str(e)
 	else :
 		response_data['success'] = '1'
-		data = serializers.serialize('json', [ S, ])
-		response_data["student"] = json.loads(data)
 	return JsonResponse(response_data)
 
 """

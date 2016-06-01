@@ -12,7 +12,7 @@ class SkillManager(models.Manager):
 
 	def deleteSkill(self, request):
 		""" deletes skill """
-		S = Skill.objects.get(skillName=request['skillName'])
+		S = Skill.objects.get(id=request['id'])
 		S = S.delete()
 		return S
 

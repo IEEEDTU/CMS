@@ -10,7 +10,7 @@ class FieldManager(models.Manager):
 
     def deleteField(self, request):
         """ delete field """
-        F = Field.objects.get(fieldName=request['fieldName'])
+        F = Field.objects.get(id=request['id'])
         F = F.delete()
         return F
 
