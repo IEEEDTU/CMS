@@ -112,6 +112,42 @@ def addProject(request):
 	return JsonResponse(response_data)
 
 @csrf_exempt
+@require_POST
+def editProject(request):
+	response_data = {}
+	try:
+		#startDate = datetime.strptime(request.POST['startDate'][:-27], '%a %b %d %Y %H:%M:%S %Z')
+		#request.POST['startDate'] = str(startDate.year) + "-" + str(startDate.month) + "-" + str(startDate.day)
+
+		#endDate = datetime.strptime(request.POST['endDate'][:-27], '%a %b %d %Y %H:%M:%S %Z')
+		#request.POST['endDate'] = str(endDate.year) + "-" + str(endDate.month) + "-" + str(endDate.day)
+
+		print(request.POST['startDate'])
+		print(request.POST['endDate'])
+		P = Project.objects.editProject(request.POST)
+	except Exception as e:
+		response_data['success'] = '0'
+		response_data['exception'] = str(e)
+	else :
+		response_data['success'] = '1'
+		data = serializers.serialize('json', [ P, ])
+		response_data["student"] = json.loads(data)
+	return JsonResponse(response_data)
+
+@csrf_exempt
+@require_POST
+def deleteProject(request):
+	response_data = {}
+	try:
+		P = Project.objects.deleteProject(request.POST)
+	except Exception as e:
+		response_data['success'] = '0'
+		response_data['exception'] = str(e)
+	else :
+		response_data['success'] = '1'
+	return JsonResponse(response_data)
+
+@csrf_exempt
 @require_GET
 def retrieveSkills(request):
     response_data = {}
