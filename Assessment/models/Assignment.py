@@ -53,7 +53,7 @@ class AssignmentManager(models.Manager):
 
     def getAssignmentsByCourse(self, request):
         """ get assignments on the basis of course """
-        C = Course.objects.get(courseId=request['courseId'])
+        C = Course.objects.get(courseCode=request['courseId'])
         A = Assignment.objects.filter(course=C)
         return A
 
@@ -63,6 +63,9 @@ class AssignmentManager(models.Manager):
         C = CourseGroup.objects.getCoursesByGroup(request)
         A = Assignment.objects.filter(course=C)
         return A
+
+
+
 
 
 class Assignment(models.Model):
