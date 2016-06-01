@@ -88,3 +88,22 @@ def retrieveMoreNews(request):
 			data = serializers.serialize('json', [ N, ])
 		response_data["news"] = json.loads(data)
 	return JsonResponse(response_data)
+
+@csrf_exempt
+@require_GET
+def getNewsById(request):
+	response_data = {}
+	try:
+		N = News.objects.getNewsById(request.GET)
+	except Exception as e:
+		response_data['success'] = '0'
+		response_data['exception'] = str(e)
+	else :
+		response_data['success'] = '1'
+		global data
+		try:
+			data = serializers.serialize('json', N)
+		except Exception as e:
+			data = serializers.serialize('json', [ N, ])
+		response_data["news"] = json.loads(data)
+	return JsonResponse(response_data)

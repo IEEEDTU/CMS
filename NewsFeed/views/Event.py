@@ -88,3 +88,22 @@ def retrieveMoreEvents(request):
 			data = serializers.serialize('json', [ E, ])
 		response_data["events"] = json.loads(data)
 	return JsonResponse(response_data)
+
+@csrf_exempt
+@require_GET
+def getEventById(request):
+	response_data = {}
+	try:
+		E = Event.objects.getEventById(request.GET)
+	except Exception as e:
+		response_data['success'] = '0'
+		response_data['exception'] = str(e)
+	else :
+		response_data['success'] = '1'
+		global data
+		try:
+			data = serializers.serialize('json', E)
+		except Exception as e:
+			data = serializers.serialize('json', [ E, ])
+		response_data["events"] = json.loads(data)
+	return JsonResponse(response_data)
